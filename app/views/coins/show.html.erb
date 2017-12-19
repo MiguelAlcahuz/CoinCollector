@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @coin.year %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @coin.country %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @coin.value %>
+</p>
+
+<%= link_to 'Edit', edit_coin_path(@coin) %> |
+<%= link_to 'Back', coins_path %>
