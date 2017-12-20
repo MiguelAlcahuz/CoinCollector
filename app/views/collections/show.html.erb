@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Totalcoin:</strong>
+  <%= @collection.totalcoin %>
+</p>
+
+<p>
+  <strong>Integer:</strong>
+  <%= @collection.integer %>
+</p>
+
+<p>
+  <strong>Sumtotalcoin:</strong>
+  <%= @collection.sumtotalcoin %>
+</p>
+
+<p>
+  <strong>Coin:</strong>
+  <%= @collection.coin %>
+</p>
+
+<%= link_to 'Edit', edit_collection_path(@collection) %> |
+<%= link_to 'Back', collections_path %>

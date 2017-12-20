@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219115024) do
+ActiveRecord::Schema.define(version: 20171220114949) do
 
   create_table "coins", force: :cascade do |t|
     t.integer "year"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20171219115024) do
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.integer "totalcoin"
+    t.float "sumtotalcoin"
+    t.integer "coin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coin_id"], name: "index_collections_on_coin_id"
   end
 
 end

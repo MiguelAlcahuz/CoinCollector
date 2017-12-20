@@ -2,7 +2,7 @@ class Coin < ApplicationRecord
 	validates :year, presence: true
 	validates :value, presence: true 
 	validates_with CoinYearValidator
-
+	belongs_to :collection
 	class CoinYearValidator < ActiveModel::Validator
 		
 		introducedEuro = {
