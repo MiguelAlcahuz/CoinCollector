@@ -1,9 +1,11 @@
 class Coin < ApplicationRecord
+	belongs_to :collection
+
 	validates :year, presence: true
 	validates :value, presence: true 
-	validates_with CoinYearValidator
-	belongs_to :collection
-	class CoinYearValidator < ActiveModel::Validator
+	validates_with coin_year_validator
+
+	def coin_year_validator 
 		
 		introducedEuro = {
 			andorra: 2015,
