@@ -1,32 +1,66 @@
 class Coin < ApplicationRecord
 	validates :year, presence: true
-	validates :value, presence: true
+	validates :value, presence: true 
+	validates_with CoinYearValidator
+
+	class CoinYearValidator < ActiveModel::Validator
+		
+		introducedEuro = {
+			andorra: 2015,
+			austria: 1999,
+			belgium: 1999, 
+			ciprus: 2008,	
+			estonia: 2011, 
+			finland: 1999, 
+			france: 1999, 
+			germany: 1999, 
+			greece: 2001,	
+			ireland: 1999, 
+			italy: 1999, 
+			latvia: 2014, 
+			lithuania: 2015, 
+			luxemburg: 1999, 
+			malta: 2007, 
+			monaco: 1999,
+			netherlands: 1999,	
+			portugal: 1999, 
+			sanmarino: 1999,
+			slovakia: 2008, 
+			slovenia: 2007, 
+			spain: 1999, 
+			vatican: 1999
+		}
+		
+		if(year < introducedEuro[:country]) 
+			raise  "This country didn't have EURO currency until #{introducedEuro[:country]}"
+		end
+	end
 	
 	# COUNTRIES WITH EURO AS THEIR CURRENCY
 
-	ANDORRA = 0 # introduced in 2015
-	AUSTRIA = 1 # introduced in 1999
-	BELGIUM = 2 # introduced in 1999
-	CIPURS = 3 # introduced in 2008
-	ESTONIA = 4 # introduced in 2011
-	FINLAND = 5 # introduced in 1999
-	FRANCE = 6 # introduced in 1999
-	GERMANY = 7 # introduced in 1999
-	GREECE = 8	# introduced in 2001
-	IRELAND = 9 # introduced in 1999
-	ITALY = 10 # introduced in 1999
-	LATVIA = 11 # introduced in 2014
-	LITHUANIA = 12 # introduced in 2015
-	LUXEMBURG = 13 # introduced in 1999
-	MALTA = 14 # introduced in 2007
-	MONACO = 15 # introduced in 1999
-	NETHERLANDS = 16 # introduced in 1999
-	PORTUGAL = 17 # introduced in 1999
-	SANMARINO = 18 # introduced in 1999
-	SLOVAKIA = 19 # introduced in 2008
-	SLOVENIA = 20 # introduced in 2007
-	SPAIN = 21 # introduced in 1999
-	VATICAN = 22 # introduced in 1999
+	ANDORRA = 0 
+	AUSTRIA = 1 
+	BELGIUM = 2
+	CIPURS = 3
+	ESTONIA = 4 
+	FINLAND = 5 
+	FRANCE = 6
+	GERMANY = 7 
+	GREECE = 8	
+	IRELAND = 9 
+	ITALY = 10 
+	LATVIA = 11 
+	LITHUANIA = 12
+	LUXEMBURG = 13 
+	MALTA = 14 
+	MONACO = 15 
+	NETHERLANDS = 16 
+	PORTUGAL = 17
+	SANMARINO = 18 
+	SLOVAKIA = 19 
+	SLOVENIA = 20 
+	SPAIN = 21 
+	VATICAN = 22 
 	
 
 	enum country: {
