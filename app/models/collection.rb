@@ -1,5 +1,4 @@
-class Collection < ApplicationRecord
-  has_many :coins
+class Collection < Coin
 
   def totalAmount
   end

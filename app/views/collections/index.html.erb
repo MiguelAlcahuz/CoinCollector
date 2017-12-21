@@ -1,34 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Collections</h1>
-<table>
-  <thead>
-    <tr>
-      <th scope="col" select_tag :country, options_for_select(Coin.countries) </th>
-      <th scope="col">  2  </th> 
-      <th scope="col">  1  </th> 
-      <th scope="col">  0,5  </th>
-      <th scope="col">  0,2  </th>
-      <th scope="col">  0,1  </th>
-      <th scope="col">  0,05  </th>
-      <th scope="col">  0,02  </th>
-      <th scope="col">  0,01  </th>
-      <th scope="col">Totalcoin</th>
-      <th scope="col">Sumtotalcoin</th>
-      <th colspan="10"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @collections.each do |collection| %>
-      <tr>
-        <td><%= collection.totalcoin %></td>
-        <td><%= collection.sumtotalcoin %></td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 <% @collections.each do |collection| %>

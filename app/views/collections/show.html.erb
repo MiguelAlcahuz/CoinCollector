@@ -1,24 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Totalcoin:</strong>
-  <%= @collection.totalcoin %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th scope="col"select_tag :country, options_for_select(Coin.countries) </th>
+      <th scope="col">  Year  </th> 
+      <th scope="col">  2  </th> 
+      <th scope="col">  1  </th> 
+      <th scope="col">  0,5  </th>
+      <th scope="col">  0,2  </th>
+      <th scope="col">  0,1  </th>
+      <th scope="col">  0,05  </th>
+      <th scope="col">  0,02  </th>
+      <th scope="col">  0,01  </th>
+      <th scope="col">Totalcoin</th>
+      <th scope="col">Sumtotalcoin</th>
+      <th colspan="10"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Integer:</strong>
-  <%= @collection.integer %>
-</p>
+  <tbody>
+    <% for i in 1999..Date.current.year %>
+      <tr>
+        <td><%= @collection.country %></td>
+        <td><%= @collection.year %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Sumtotalcoin:</strong>
-  <%= @collection.sumtotalcoin %>
-</p>
 
-<p>
-  <strong>Coin:</strong>
-  <%= @collection.coin %>
-</p>
-
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
+ |
 <%= link_to 'Back', collections_path %>
