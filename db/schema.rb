@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171220114949) do
   end
 
   create_table "collections", force: :cascade do |t|
+    t.string "currency"
     t.integer "totalcoin"
     t.float "sumtotalcoin"
     t.integer "coin_id"

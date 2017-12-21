@@ -1,4 +1,4 @@
-class Collection < Coin
+class Collection < ApplicationRecord
 
   def totalAmount
   end
