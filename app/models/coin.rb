@@ -3,47 +3,14 @@ class Coin < ApplicationRecord
 
 	validates :year, presence: true
 	validates :value, presence: true 
-	validates_with coin_year_validator
+	#validates_with CoinYearValidator
 
-	def coin_year_validator 
-		
-		introducedEuro = {
-			andorra: 2015,
-			austria: 1999,
-			belgium: 1999, 
-			ciprus: 2008,	
-			estonia: 2011, 
-			finland: 1999, 
-			france: 1999, 
-			germany: 1999, 
-			greece: 2001,	
-			ireland: 1999, 
-			italy: 1999, 
-			latvia: 2014, 
-			lithuania: 2015, 
-			luxemburg: 1999, 
-			malta: 2007, 
-			monaco: 1999,
-			netherlands: 1999,	
-			portugal: 1999, 
-			sanmarino: 1999,
-			slovakia: 2008, 
-			slovenia: 2007, 
-			spain: 1999, 
-			vatican: 1999
-		}
-		
-		if(year < introducedEuro[:country]) 
-			raise  "This country didn't have EURO currency until #{introducedEuro[:country]}"
-		end
-	end
-	
 	# COUNTRIES WITH EURO AS THEIR CURRENCY
 
 	ANDORRA = 0 
 	AUSTRIA = 1 
 	BELGIUM = 2
-	CIPURS = 3
+	CIPRUS = 3
 	ESTONIA = 4 
 	FINLAND = 5 
 	FRANCE = 6
@@ -113,3 +80,38 @@ class Coin < ApplicationRecord
 		twoeuro: TWOEURO
 	}
 end
+	
+	class CoinYearValidator < ActiveModel::Validator 
+		def validate(record)
+			introducedEuro = {
+				andorra: 2015,
+				austria: 1999,
+				belgium: 1999, 
+				ciprus: 2008,	
+				estonia: 2011, 
+				finland: 1999, 
+				france: 1999, 
+				germany: 1999, 
+				greece: 2001,	
+				ireland: 1999, 
+				italy: 1999, 
+				latvia: 2014, 
+				lithuania: 2015, 
+				luxemburg: 1999, 
+				malta: 2007, 
+				monaco: 1999,
+				netherlands: 1999,	
+				portugal: 1999, 
+				sanmarino: 1999,
+				slovakia: 2008, 
+				slovenia: 2007, 
+				spain: 1999, 
+				vatican: 1999
+			}
+		
+			if record.year < record.introducedEuro[:country]
+				raise  "This country didn't have EURO currency until #{introducedEuro[:country]}"
+			end
+		end
+	end
+	
