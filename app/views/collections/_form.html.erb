@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :currency%>
+    <%= form.text_field :currency, id: :collection_currency %>
+  </div>
+
+  <div class="field">
     <%= form.label :totalcoin %>
     <%= form.text_field :totalcoin, id: :collection_totalcoin %>
   </div>

@@ -4,6 +4,7 @@
 <table>
   <thead>
     <tr>
+<<<<<<< HEAD
       <th select_tag :country, options_for_select(Coin.countries) </th>
       <th scope="col">  2  </th> 
       <th scope="col">  1  </th> 
@@ -16,19 +17,32 @@
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
       <th colspan="10"></th>
+=======
+      <th scope="col"> Currency </th>
+      <th scope="col"> Total of Coins </th>
+      <th scope="col"> Total Value of Coins </th>
+      
+>>>>>>> Adding_collection_entity
     </tr>
   </thead>
 
   <tbody>
-    <% @collections.each do |collection| %>
+    <% @collections.each do |collection|  %>
       <tr>
+<<<<<<< HEAD
         <td><%= collection.totalcoin %></td>
         <td><%= collection.sumtotalcoin %></td>
         
+=======
+        <td><%= @collection.currency %></td>
+        <td><%= @collection.totalcoin%></td>
+        <td><%= @collection.sumtotalcoin%></td>
+>>>>>>> Adding_collection_entity
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to 'New Collection', new_collection_path %>
 
 <br>
 <% @collections.each do |collection| %>

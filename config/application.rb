@@ -19,8 +19,13 @@ module CoinCollectionProject
       g.javascripts     false
       g.helper          false
       g.jbuilder        false
+<<<<<<< HEAD
       #g.test_framework  :rspec, fixture: false
       #g.view_specs      false
+=======
+      g.test_framework  :rspec, fixture: false
+      g.view_specs      false
+>>>>>>> Adding_collection_entity
     end
   end
 end

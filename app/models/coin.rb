@@ -3,8 +3,46 @@ class Coin < ApplicationRecord
 
 	validates :year, presence: true
 	validates :value, presence: true 
+<<<<<<< HEAD
 	#validates_with CoinYearValidator
 
+=======
+
+	belongs_to :collection
+	
+	def CoinValidator 
+		
+		introducedEuro = {
+			andorra: 2015,
+			austria: 1999,
+			belgium: 1999, 
+			ciprus: 2008,	
+			estonia: 2011, 
+			finland: 1999, 
+			france: 1999, 
+			germany: 1999, 
+			greece: 2001,	
+			ireland: 1999, 
+			italy: 1999, 
+			latvia: 2014, 
+			lithuania: 2015, 
+			luxemburg: 1999, 
+			malta: 2007, 
+			monaco: 1999,
+			netherlands: 1999,	
+			portugal: 1999, 
+			sanmarino: 1999,
+			slovakia: 2008, 
+			slovenia: 2007, 
+			spain: 1999, 
+			vatican: 1999
+		}
+		
+		if(year < introducedEuro[:country]) 
+			raise  "This country didn't have EURO currency until #{introducedEuro[:country]}"
+		end
+	end
+>>>>>>> Adding_collection_entity
 	# COUNTRIES WITH EURO AS THEIR CURRENCY
 
 	ANDORRA = 0 
@@ -79,8 +117,15 @@ class Coin < ApplicationRecord
 		oneeuro: ONEEURO,
 		twoeuro: TWOEURO
 	}
+
+	def construct(year,country,value) 
+		@year = year
+		@country = country
+		@value = value
+	end
 end
 	
+<<<<<<< HEAD
 	class CoinYearValidator < ActiveModel::Validator 
 		def validate(record)
 			introducedEuro = {
@@ -115,3 +160,5 @@ end
 		end
 	end
 	
+=======
+>>>>>>> Adding_collection_entity
