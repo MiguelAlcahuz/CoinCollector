@@ -1,15 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Collections</h1>
-
 <table>
   <thead>
     <tr>
-      <th>Totalcoin</th>
-      <th>Integer</th>
-      <th>Sumtotalcoin</th>
-      <th>Coin</th>
-      <th colspan="3"></th>
+      <th scope="col" select_tag :country, options_for_select(Coin.countries) </th>
+      <th scope="col">  2  </th> 
+      <th scope="col">  1  </th> 
+      <th scope="col">  0,5  </th>
+      <th scope="col">  0,2  </th>
+      <th scope="col">  0,1  </th>
+      <th scope="col">  0,05  </th>
+      <th scope="col">  0,02  </th>
+      <th scope="col">  0,01  </th>
+      <th scope="col">Totalcoin</th>
+      <th scope="col">Sumtotalcoin</th>
+      <th colspan="10"></th>
     </tr>
   </thead>
 
@@ -17,17 +23,18 @@
     <% @collections.each do |collection| %>
       <tr>
         <td><%= collection.totalcoin %></td>
-        <td><%= collection.integer %></td>
         <td><%= collection.sumtotalcoin %></td>
-        <td><%= collection.coin %></td>
-        <td><%= link_to 'Show', collection %></td>
-        <td><%= link_to 'Edit', edit_collection_path(collection) %></td>
-        <td><%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% @collections.each do |collection| %>
+<%= link_to 'Show', collection %>
+<%= link_to 'Edit', edit_collection_path(collection) %>
+<%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'My coins', collection_coins_path(collection) %>
+<%end%>
 
-<%= link_to 'New Collection', new_collection_path %>
