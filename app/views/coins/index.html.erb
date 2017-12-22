@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th scope="col"select_tag :country, options_for_select(Coin.countries) </th>
-      <th scope="col">  Year  </th> 
+      <th scope="col"> <%= select_tag :country, options_for_select(Coin.countries) %></th>
+      <th scope="col"> <%= select_tag :year, options_for_select(1999..Date.current.year) %> </th> 
       <th scope="col">  2  </th> 
       <th scope="col">  1  </th> 
       <th scope="col">  0,5  </th>
@@ -24,12 +24,7 @@
   <tbody>
     <% @coins.each do |coin| %>
       <tr>
-        <td><%= coin.year %></td>
-        <td><%= coin.country %></td>
-        <td><%= coin.value %></td>
-        <td><%= link_to 'Show', coin %></td>
-        <td><%= link_to 'Edit', edit_coin_path(coin) %></td>
-        <td><%= link_to 'Destroy', coin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        %></td>
       </tr>
     <% end %>
   </tbody>

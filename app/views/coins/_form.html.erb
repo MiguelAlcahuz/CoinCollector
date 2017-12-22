@@ -18,15 +18,12 @@
 
   <div class="field">
     <%= form.label :country %>
-    <%= select_tag :country, options_for_select(Coin.countries) %>
-    <%#= form.text_field :country, id: :coin_country %>
+    <%= select("coin", "country", Coin.countries.keys) %>
   </div>
 
   <div class="field">
     <%= form.label :value %>
-    <%#= form.number_field :value, id: :coin_value, step: :any %>
-        <%= select_tag :value, options_for_select(Coin.values) %>
-
+    <%= select("coin", "value", Coin.values.keys) %>
   </div>
 
   <div class="actions">

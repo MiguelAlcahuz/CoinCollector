@@ -1,6 +1,6 @@
 class CoinsController < ApplicationController
   before_action :set_coin, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_collection, only: [:create]
   # GET /coins
   # GET /coins.json
   def index
@@ -25,11 +25,10 @@ class CoinsController < ApplicationController
   # POST /coins.json
   def create
     @coin = Coin.new(coin_params)
-
+    @coin.collection = @collection
     respond_to do |format|
-      raise "#{@coin.inspect}"
       if @coin.save
-        format.html { redirect_to @coin, notice: 'Coin was successfully created.' }
+        format.html { redirect_to collection_coins_path, notice: 'Coin was successfully created.' }
         format.json { render :show, status: :created, location: @coin }
       else
         format.html { render :new }
@@ -66,6 +65,10 @@ class CoinsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
       @coin = Coin.find(params[:id])
+    end
+
+    def set_collection
+      @collection = Collection.find(params[:collection_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
