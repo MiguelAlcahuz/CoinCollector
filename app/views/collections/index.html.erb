@@ -2,53 +2,18 @@
 
 <h1>Collections</h1>
 <table>
-  <thead>
-    <tr>
-<<<<<<< HEAD
-      <th select_tag :country, options_for_select(Coin.countries) </th>
-      <th scope="col">  2  </th> 
-      <th scope="col">  1  </th> 
-      <th scope="col">  0,5  </th>
-      <th scope="col">  0,2  </th>
-      <th scope="col">  0,1  </th>
-      <th scope="col">  0,05  </th>
-      <th scope="col">  0,02  </th>
-      <th scope="col">  0,01  </th>
-      <th scope="col">Totalcoin</th>
-      <th scope="col">Sumtotalcoin</th>
-      <th colspan="10"></th>
-=======
-      <th scope="col"> Currency </th>
-      <th scope="col"> Total of Coins </th>
-      <th scope="col"> Total Value of Coins </th>
-      
->>>>>>> Adding_collection_entity
-    </tr>
-  </thead>
-
   <tbody>
     <% @collections.each do |collection|  %>
       <tr>
-<<<<<<< HEAD
-        <td><%= collection.totalcoin %></td>
-        <td><%= collection.sumtotalcoin %></td>
-        
-=======
-        <td><%= @collection.currency %></td>
-        <td><%= @collection.totalcoin%></td>
-        <td><%= @collection.sumtotalcoin%></td>
->>>>>>> Adding_collection_entity
+        <td><%#= @collection.currency %></td>
+        <%= link_to 'My coins', collection_coins_path(collection) %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= link_to 'New Collection', new_collection_path %>
 
-<br>
-<% @collections.each do |collection| %>
-<%= link_to 'Show', collection %>
-<%= link_to 'Edit', edit_collection_path(collection) %>
-<%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'My coins', collection_coins_path(collection) %>
-<%end%>
+
+
+
 

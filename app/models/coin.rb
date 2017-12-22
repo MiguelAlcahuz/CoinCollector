@@ -1,15 +1,15 @@
 class Coin < ApplicationRecord
 	belongs_to :collection
 
-	validates :year, presence: true
-	validates :value, presence: true 
-
-	#validates_with CoinValidator
+	validates :year, presence: true, numericality: true
+	#validate coin_validator
+	validates :value, presence: true, inclusion: {in: :value, 
+		message: "This type of coin does not exist"}
 
 
 	belongs_to :collection
 	
-	def CoinValidator 
+	def coin_validator 
 		
 		introducedEuro = {
 			andorra: 2015,
@@ -71,38 +71,38 @@ class Coin < ApplicationRecord
 
 	enum country: {
 
-		andorra: ANDORRA,
-		austria: AUSTRIA,
-		belgium: BELGIUM, 
-		ciprus: CIPRUS,	
-		estonia: ESTONIA, 
-		finland: FINLAND, 
-		france: FRANCE, 
-		germany: GERMANY, 
-		greece: GREECE,	
-		ireland: IRELAND, 
-		italy: ITALY, 
-		latvia: LATVIA, 
-		lithuania: LITHUANIA, 
-		luxemburg: LUXEMBURG, 
-		malta: MALTA, 
-		monaco: MONACO,
-		netherlands: NETHERLANDS,	
-		portugal: PORTUGAL, 
-		sanmarino: SANMARINO,
-		slovakia: SLOVAKIA, 
-		slovenia: SLOVENIA, 
-		spain: SPAIN, 
-		vatican: VATICAN
+		Andorra: ANDORRA,
+		Austria: AUSTRIA,
+		Belgium: BELGIUM, 
+		Ciprus: CIPRUS,	
+		Estonia: ESTONIA, 
+		Finland: FINLAND, 
+		France: FRANCE, 
+		Germany: GERMANY, 
+		Greece: GREECE,	
+		Ireland: IRELAND, 
+		Italy: ITALY, 
+		Latvia: LATVIA, 
+		Lithuania: LITHUANIA, 
+		Luxemburg: LUXEMBURG, 
+		Malta: MALTA, 
+		Monaco: MONACO,
+		Netherlands: NETHERLANDS,	
+		Portugal: PORTUGAL, 
+		Sanmarino: SANMARINO,
+		Slovakia: SLOVAKIA, 
+		Slovenia: SLOVENIA, 
+		Spain: SPAIN, 
+		Vatican: VATICAN
 
 	}
 
-	ONECENT = 0,01 
-	TWOCENT = 0,02
-	FIVECENT = 0,05
-	TENCENT = 0,1
-	TWENTYCENT = 0,2
-	FIFTYCENT = 0,5
+	ONECENT = 0.01 
+	TWOCENT = 0.02
+	FIVECENT = 0.05
+	TENCENT = 0.1
+	TWENTYCENT = 0.2
+	FIFTYCENT = 0.5
 	ONEEURO = 1
 	TWOEURO = 2
 
@@ -117,7 +117,7 @@ class Coin < ApplicationRecord
 		twoeuro: TWOEURO
 	}
 
-	def construct(year,country,value) 
+	def constructor(year,country,value) 
 		@year = year
 		@country = country
 		@value = value

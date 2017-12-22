@@ -27,6 +27,7 @@ class CoinsController < ApplicationController
     @coin = Coin.new(coin_params)
 
     respond_to do |format|
+      raise "#{@coin.inspect}"
       if @coin.save
         format.html { redirect_to @coin, notice: 'Coin was successfully created.' }
         format.json { render :show, status: :created, location: @coin }
@@ -69,6 +70,6 @@ class CoinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coin_params
-      params.require(:coin).permit(:year, :country, :value)
+      params.require(:coin).permit(:year, :country, :value, :collection_id)
     end
 end

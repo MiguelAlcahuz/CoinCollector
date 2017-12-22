@@ -1,4 +1,4 @@
-<%= form_with(model: coin, local: true) do |form| %>
+<%= form_with(model: coin, local: true, url: collection_coins_path) do |form| %>
   <% if coin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(coin.errors.count, "error") %> prohibited this coin from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :year %>
-    <%= form.number_field :year, id: :coin_year %>
+    <%= form.text_field :year, id: :coin_year %>
   </div>
 
   <div class="field">
@@ -24,8 +24,9 @@
 
   <div class="field">
     <%= form.label :value %>
-    <%= select_tag :values, options_for_select(Coin.values) %>
-    <%#= form.number_field :value, id: :coin_value %>
+    <%#= form.number_field :value, id: :coin_value, step: :any %>
+        <%= select_tag :value, options_for_select(Coin.values) %>
+
   </div>
 
   <div class="actions">

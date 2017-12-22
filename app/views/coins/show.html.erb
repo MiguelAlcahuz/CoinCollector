@@ -15,5 +15,16 @@
   <%= @coin.value %>
 </p>
 
+<tbody>
+    <% @coins.each do |coin| %>
+      <tr>
+        <td><%= coin.year %></td>
+        <td><%= coin.country %></td>
+        <td><%= coin.value %></td>
+        <td><%= link_to 'Edit', edit_coin_path(coin) %></td>
+        <td><%= link_to 'Destroy', coin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 <%= link_to 'Edit', edit_coin_path(@coin) %> |
 <%= link_to 'Back', coins_path %>

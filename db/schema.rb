@@ -16,18 +16,16 @@ ActiveRecord::Schema.define(version: 20171220114949) do
     t.integer "year"
     t.integer "country"
     t.float "value"
+    t.integer "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_coins_on_collection_id"
   end
 
   create_table "collections", force: :cascade do |t|
     t.string "currency"
-    t.integer "totalcoin"
-    t.float "sumtotalcoin"
-    t.integer "coin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["coin_id"], name: "index_collections_on_coin_id"
   end
 
 end
