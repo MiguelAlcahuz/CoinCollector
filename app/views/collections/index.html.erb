@@ -5,8 +5,7 @@
   <tbody>
     <% @collections.each do |collection|  %>
       <tr>
-        <td><%#= @collection.currency %></td>
-        <%= link_to 'My coins', collection_coins_path(collection) %>
+        <td><%= collection.currency %> <%= link_to 'My coins', collection_coins_path(collection) %> <%= link_to 'Edit', edit_collection_path(collection) %> <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
