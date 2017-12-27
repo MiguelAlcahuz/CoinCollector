@@ -1,4 +1,4 @@
-<%= form_with(model: coin, local: true, url: collection_coins_path) do |form| %>
+<%= form_with(model: [ @coin.collection, coin ], local: true, url: collection_coins_path) do |form| %>
   <% if coin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(coin.errors.count, "error") %> prohibited this coin from being saved:</h2>

@@ -1,6 +1,6 @@
 class CoinsController < ApplicationController
   before_action :set_coin, only: [:show, :edit, :update, :destroy]
-  before_action :set_collection, only: [:create]
+  before_action :set_collection, only: [:create, :update, :edit, :destroy]
   # GET /coins
   # GET /coins.json
   def index
@@ -19,6 +19,7 @@ class CoinsController < ApplicationController
 
   # GET /coins/1/edit
   def edit
+    @coin = Coin.find(params[:id])
   end
 
   # POST /coins
@@ -28,7 +29,7 @@ class CoinsController < ApplicationController
     @coin.collection = @collection
     respond_to do |format|
       if @coin.save
-        format.html { redirect_to collection_coins_path, notice: 'Coin was successfully created.' }
+        format.html { redirect_to collection_coins_path(@coin.collection), notice: 'Coin was successfully created.' }
         format.json { render :show, status: :created, location: @coin }
       else
         format.html { render :new }
@@ -40,9 +41,10 @@ class CoinsController < ApplicationController
   # PATCH/PUT /coins/1
   # PATCH/PUT /coins/1.json
   def update
+    @coin.collection = @collection
     respond_to do |format|
       if @coin.update(coin_params)
-        format.html { redirect_to collection_coins_path, notice: 'Coin was successfully updated.' }
+        format.html { redirect_to collection_coins_path(@coin.collection), notice: 'Coin was successfully updated.' }
         format.json { render :show, status: :ok, location: @coin }
       else
         format.html { render :edit }
@@ -54,9 +56,10 @@ class CoinsController < ApplicationController
   # DELETE /coins/1
   # DELETE /coins/1.json
   def destroy
+    @coin.collection = @collection
     @coin.destroy
     respond_to do |format|
-      format.html { redirect_to collection_coins_path, notice: 'Coin was successfully destroyed.' }
+      format.html { redirect_to collection_coins_path(@coin.collection), notice: 'Coin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
