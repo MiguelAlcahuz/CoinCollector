@@ -2,12 +2,9 @@ class Coin < ApplicationRecord
 	belongs_to :collection
 
 	validates :year, presence: true, numericality: true
-	#validate coin_validator
+	validates :country, presence: true
 	validates :value, presence: true, inclusion: {in: :value, 
 		message: "This type of coin does not exist"}
-
-
-	belongs_to :collection
 	
 	def coin_validator 
 		
