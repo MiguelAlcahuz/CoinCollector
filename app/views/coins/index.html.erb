@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Coins</h1>
-
 <table>
   <thead>
     <tr>
@@ -38,12 +37,12 @@
   </thead>
 
 
-    <% @coins.each do |coin| %>
+    <% @coin.each do |coin| %>
       <tr>
         <td> <%= coin.country %>  
         <%= coin.year %>
           <%= coin.value %> 
-          <%= link_to 'Edit', edit_collection_coin_path(coin.collection, coin) %> 
+          <%= link_to 'Edit', edit_collection_coin_path(coin.collection, coin), class: 'btn btn-primary' %> 
           <%= link_to 'Destroy', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
     <% end %>
@@ -52,4 +51,4 @@
 
 <br>
 
-<%= link_to 'New Coin', new_collection_coin_path %>
+<%= link_to 'New Coin', new_collection_coin_path(@collection) %>

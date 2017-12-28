@@ -1,6 +1,6 @@
 <h1>Editing Coin</h1>
 
-<%= render 'form', coin: @coin %>
+<%= render 'form', coin: @coin, collection: @collection %>
 
 <%= link_to 'Show', collection_coin_path(@coin.collection, @coin) %> |
 <%= link_to 'Back', collection_coins_path(@coin.collection) %>

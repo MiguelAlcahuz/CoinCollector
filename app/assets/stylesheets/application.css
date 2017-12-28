@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+
+.title1 {
+	color: red;
+}
+
+.espacio {
+	width: 20px;
+}
+
+.alto {
+	height: 130px;
+}

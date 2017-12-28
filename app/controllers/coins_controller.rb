@@ -1,10 +1,10 @@
 class CoinsController < ApplicationController
   before_action :set_coin, only: [:show, :edit, :update, :destroy]
-  before_action :set_collection, only: [:create, :update, :edit, :destroy]
+  before_action :set_collection, only: [:new, :create, :update, :edit, :destroy, :index]
   # GET /coins
   # GET /coins.json
   def index
-    @coins = Coin.all
+    @coin = Coin.all 
   end
 
   # GET /coins/1
@@ -19,7 +19,6 @@ class CoinsController < ApplicationController
 
   # GET /coins/1/edit
   def edit
-    @coin = Coin.find(params[:id])
   end
 
   # POST /coins
@@ -41,10 +40,10 @@ class CoinsController < ApplicationController
   # PATCH/PUT /coins/1
   # PATCH/PUT /coins/1.json
   def update
-    @coin.collection = @collection
+    
     respond_to do |format|
       if @coin.update(coin_params)
-        format.html { redirect_to collection_coins_path(@coin.collection), notice: 'Coin was successfully updated.' }
+        format.html { redirect_to collection_coins_path, notice: 'Coin was successfully updated.' }
         format.json { render :show, status: :ok, location: @coin }
       else
         format.html { render :edit }
