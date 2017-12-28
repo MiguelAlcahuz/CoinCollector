@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Coins</h1>
+<div class="table table-bordered">
 <table>
   <thead>
     <tr>
@@ -48,7 +49,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'New Coin', new_collection_coin_path(@collection) %>
