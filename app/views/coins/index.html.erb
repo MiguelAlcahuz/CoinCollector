@@ -1,15 +1,13 @@
 <p id="notice"><%= notice %></p>
-
+<table class="table">
 <h1>Coins</h1>
-<div class="table table-bordered">
-<table>
+</table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col"> <%= select_tag :country, options_for_select(Coin.countries) %></th>
-          
-      <th scope="col"> Year </th> 
-          
-
+      <th scope="col"> <%= select_tag(:country, options_for_select(Coin.countries)) %></th> 
+      <%= raise :country %>  
+      <th scope="col"> Year   </th>
       <th scope="col">  2  </th> 
       <th scope="col">  1  </th> 
       <th scope="col">  0,5  </th>
@@ -20,22 +18,16 @@
       <th scope="col">  0,01  </th>
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
-      <th colspan="12"></th>
-      <td> <%#for i in 1999..Date.current.year %> 
-          <tr>
-          <td> <%#= Coin.country %> </td>
-          </tr>
-          <%# end %>
-          </td>
-      <td>
+      
+  </thead>
       <% for i in 1999..Date.current.year %> 
-          <tr>
+      <tr>
+      <td> <%= :country  %> </td>
           <td> <%= i %> </td>
-          </tr> <%#= select_tag :year, options_for_select(1999..Date.current.year) %> 
-          <% end %>
+          </tr> 
       </td>
     </tr>
-  </thead>
+          <% end %>
 
 
     <% @coin.each do |coin| %>
@@ -49,7 +41,6 @@
     <% end %>
   </tbody>
 </table>
-</div>
 <br>
 
 <%= link_to 'New Coin', new_collection_coin_path(@collection) %>

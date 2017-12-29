@@ -3,19 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.table td.fit {
-    white-space: nowrap;
-    width: 1%;
-}
-
-.width {
+.formatcontent {
 	width: 50%;
+	text-align: center;
+	color: red;
 }
 
-.format {
-	color: green;
-	font-family: "Huxley vertical", monospace;
-	font-size: 40px;
+.formattitle {
+	color: gray;
+	font-family: "Courier New", monospace;
+	font-size: 30px;
 	font-style: normal;
 	font-weight: bold;
+	text-align: center;
+}
+
+.formatsubheader {
+	text-align: center;
+}
+.table margin {
+	margin-top: 0;
 }
