@@ -6,34 +6,35 @@ class Coin < ApplicationRecord
 	validates :value, presence: true, inclusion: {in: :value, 
 		message: "This type of coin does not exist"}
 	
+	def self.introduced_euro 
+	{
+		andorra: 2015,
+		austria: 1999,
+		belgium: 1999, 
+		ciprus: 2008,	
+		estonia: 2011, 
+		finland: 1999, 
+		france: 1999, 
+		germany: 1999, 
+		greece: 2001,	
+		ireland: 1999, 
+		italy: 1999, 
+		latvia: 2014, 
+		lithuania: 2015, 
+		luxemburg: 1999, 
+		malta: 2007, 
+		monaco: 1999,
+		netherlands: 1999,	
+		portugal: 1999, 
+		sanmarino: 1999,
+		slovakia: 2008, 
+		slovenia: 2007, 
+		spain: 1999, 
+		vatican: 1999
+	}
+	end
+	
 	def coin_validator 
-		
-		introducedEuro = {
-			andorra: 2015,
-			austria: 1999,
-			belgium: 1999, 
-			ciprus: 2008,	
-			estonia: 2011, 
-			finland: 1999, 
-			france: 1999, 
-			germany: 1999, 
-			greece: 2001,	
-			ireland: 1999, 
-			italy: 1999, 
-			latvia: 2014, 
-			lithuania: 2015, 
-			luxemburg: 1999, 
-			malta: 2007, 
-			monaco: 1999,
-			netherlands: 1999,	
-			portugal: 1999, 
-			sanmarino: 1999,
-			slovakia: 2008, 
-			slovenia: 2007, 
-			spain: 1999, 
-			vatican: 1999
-		}
-		
 		if(year < introducedEuro[:country]) 
 			raise  "This country didn't have EURO currency until #{introducedEuro[:country]}"
 		end
