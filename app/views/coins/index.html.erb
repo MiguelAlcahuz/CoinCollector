@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th scope="col">
-        <%= select_tag('paises', options_for_select(Coin.countries, selected: Coin.countries.first)) %>
+        <%= select_tag :country, options_for_select(Coin.countries), :onchange => 'showCountry()' %>
       </th> 
       <th scope="col"> Year   </th>
       <th scope="col">  2  </th> 
@@ -19,11 +19,10 @@
       <th scope="col">  0,01  </th>
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
-      
   </thead>
-      <% for i in 1999..Date.current.year %> 
+      <% for i in Coin.introduced_euro.values.first..Date.current.year %> 
       <tr>
-          <td> <%= :country  %> </td>
+          <td> <%= Coin.countries.keys.first %> </td>
           <td> <%= i %> </td>
           </tr> 
       </td>
