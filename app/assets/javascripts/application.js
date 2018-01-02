@@ -13,6 +13,10 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
 function showCountry(){
-	console.log("Hola");
+	var selectedCountry =  document.getElementById('country').value;
+	console.log(selectedCountry);
+	var newTable = document.createElement("table");
+	
 }

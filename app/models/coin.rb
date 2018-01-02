@@ -5,7 +5,12 @@ class Coin < ApplicationRecord
 	validates :country, presence: true
 	validates :value, presence: true, inclusion: {in: :value, 
 		message: "This type of coin does not exist"}
+		
+	def by_country(c)
+		where(country: 'c' ).select('coins.*')
+	end
 	
+
 	def self.introduced_euro 
 	{
 		andorra: 2015,

@@ -6,7 +6,10 @@
   <thead>
     <tr>
       <th scope="col">
-        <%= select_tag :country, options_for_select(Coin.countries), :onchange => 'showCountry()' %>
+        <form url = "<%= collection_coins_path(@collection) %>" method = "GET"> 
+        <%= select_tag :country, options_for_select(Coin.countries.keys), :onchange => 'showCountry()' %>
+        <button type="submit"> Enviar </button>
+        </form>
       </th> 
       <th scope="col"> Year   </th>
       <th scope="col">  2  </th> 
@@ -20,6 +23,7 @@
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
   </thead>
+  <%#= "Esto es de prueba" %>
       <% for i in Coin.introduced_euro.values.first..Date.current.year %> 
       <tr>
           <td> <%= Coin.countries.keys.first %> </td>
@@ -38,7 +42,7 @@
           <%= link_to 'Edit', edit_collection_coin_path(coin.collection, coin) %> 
           <%= link_to 'Destroy', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
-    <% end %>
+      <% end %>
   </tbody>
 </table>
 <br>
