@@ -17,6 +17,8 @@
 function showCountry(){
 	var selectedCountry =  document.getElementById('country').value;
 	console.log(selectedCountry);
-	var newTable = document.createElement("table");
 	
+   // for i in Coin.introduced_euro[selectedCountry]..yearNow  
+
+
 }

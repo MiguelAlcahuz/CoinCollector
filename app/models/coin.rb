@@ -6,12 +6,12 @@ class Coin < ApplicationRecord
 	validates :value, presence: true, inclusion: {in: :value, 
 		message: "This type of coin does not exist"}
 		
-	def by_country(c)
-		where(country: 'c' ).select('coins.*')
+	def self.by_country(c)
+		where(country: 'c' )
 	end
 	
 
-	def self.introduced_euro 
+	enum introducedeuro: 
 	{
 		andorra: 2015,
 		austria: 1999,
@@ -37,10 +37,10 @@ class Coin < ApplicationRecord
 		spain: 1999, 
 		vatican: 1999
 	}
-	end
+	
 	
 	def coin_validator 
-		if(year < introducedEuro[:country]) 
+		if(year < introduced_euro[:country]) 
 			raise  "This country didn't have EURO currency until #{introducedEuro[:country]}"
 		end
 	end

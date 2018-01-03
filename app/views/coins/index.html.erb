@@ -3,6 +3,7 @@
 <h1>Coins</h1>
 </table>
 <table class="table table-bordered">
+  <% @enrique = Coin.countries.keys %>
   <thead>
     <tr>
       <th scope="col">
@@ -23,16 +24,15 @@
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
   </thead>
-  <%#= "Esto es de prueba" %>
-      <% for i in Coin.introduced_euro.values.first..Date.current.year %> 
+
+      <% for i in Coin.introducedeuros[params[:country].downcase]..Date.current.year %> 
       <tr>
-          <td> <%= Coin.countries.keys.first %> </td>
+          <td> <%= params[:country] %> </td>
           <td> <%= i %> </td>
           </tr> 
       </td>
     </tr>
-          <% end %>
-
+    <% end %>
 
     <% @coin.each do |coin| %>
       <tr>
@@ -43,6 +43,7 @@
           <%= link_to 'Destroy', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
       <% end %>
+
   </tbody>
 </table>
 <br>
