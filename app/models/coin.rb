@@ -7,37 +7,41 @@ class Coin < ApplicationRecord
 		message: "This type of coin does not exist"}
 		
 	def self.by_country(c)
-		where(country: 'c' )
+		where(country: 'c').select('coins.*')
 	end
 	
 
-	enum introducedeuro: 
-	{
-		andorra: 2015,
-		austria: 1999,
-		belgium: 1999, 
-		ciprus: 2008,	
-		estonia: 2011, 
-		finland: 1999, 
-		france: 1999, 
-		germany: 1999, 
-		greece: 2001,	
-		ireland: 1999, 
-		italy: 1999, 
-		latvia: 2014, 
-		lithuania: 2015, 
-		luxemburg: 1999, 
-		malta: 2007, 
-		monaco: 1999,
-		netherlands: 1999,	
-		portugal: 1999, 
-		sanmarino: 1999,
-		slovakia: 2008, 
-		slovenia: 2007, 
-		spain: 1999, 
-		vatican: 1999
+	def self.introduced_euro(country) 
+	h = {
+		"andorra": 2015,
+		"austria": 1999,
+		"belgium": 1999, 
+		"ciprus": 2008,	
+		"estonia": 2011, 
+		"finland": 1999, 
+		"france": 1999, 
+		"germany": 1999, 
+		"greece": 2001,	
+		"ireland": 1999, 
+		"italy": 1999, 
+		"latvia": 2014, 
+		"lithuania": 2015, 
+		"luxemburg": 1999, 
+		"malta": 2007, 
+		"monaco": 1999,
+		"netherlands": 1999,	
+		"portugal": 1999, 
+		"sanmarino": 1999,
+		"slovakia": 2008, 
+		"slovenia": 2007, 
+		"spain": 1999, 
+		"vatican": 1999
 	}
-	
+	h.each { |k,v| if country.eql?(k.to_s) 
+						return v 
+				   end
+			}
+	end
 	
 	def coin_validator 
 		if(year < introduced_euro[:country]) 
@@ -74,29 +78,29 @@ class Coin < ApplicationRecord
 
 	enum country: {
 
-		Andorra: ANDORRA,
-		Austria: AUSTRIA,
-		Belgium: BELGIUM, 
-		Ciprus: CIPRUS,	
-		Estonia: ESTONIA, 
-		Finland: FINLAND, 
-		France: FRANCE, 
-		Germany: GERMANY, 
-		Greece: GREECE,	
-		Ireland: IRELAND, 
-		Italy: ITALY, 
-		Latvia: LATVIA, 
-		Lithuania: LITHUANIA, 
-		Luxemburg: LUXEMBURG, 
-		Malta: MALTA, 
-		Monaco: MONACO,
-		Netherlands: NETHERLANDS,	
-		Portugal: PORTUGAL, 
-		Sanmarino: SANMARINO,
-		Slovakia: SLOVAKIA, 
-		Slovenia: SLOVENIA, 
-		Spain: SPAIN, 
-		Vatican: VATICAN
+		andorra: ANDORRA,
+		austria: AUSTRIA,
+		belgium: BELGIUM, 
+		ciprus: CIPRUS,	
+		estonia: ESTONIA, 
+		finland: FINLAND, 
+		france: FRANCE, 
+		germany: GERMANY, 
+		greece: GREECE,	
+		ireland: IRELAND, 
+		italy: ITALY, 
+		latvia: LATVIA, 
+		lithuania: LITHUANIA, 
+		luxemburg: LUXEMBURG, 
+		malta: MALTA, 
+		monaco: MONACO,
+		netherlands: NETHERLANDS,	
+		portugal: PORTUGAL, 
+		sanmarino: SANMARINO,
+		slovakia: SLOVAKIA, 
+		slovenia: SLOVENIA, 
+		spain: SPAIN, 
+		vatican: VATICAN
 
 	}
 

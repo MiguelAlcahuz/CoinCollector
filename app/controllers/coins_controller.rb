@@ -4,7 +4,11 @@ class CoinsController < ApplicationController
   # GET /coins
   # GET /coins.json
   def index
-    @coin = Coin.by_country(params[:country]) 
+    if params[:country].blank?
+      params[:country] = "andorra"
+    end
+    @coin = Coin.where(country: params[:country])
+    #raise "______#{params[:country].inspect}"
   end
 
   # GET /coins/1

@@ -3,13 +3,12 @@
 <h1>Coins</h1>
 </table>
 <table class="table table-bordered">
-  <% @enrique = Coin.countries.keys %>
   <thead>
     <tr>
       <th scope="col">
         <form url = "<%= collection_coins_path(@collection) %>" method = "GET"> 
-        <%= select_tag :country, options_for_select(Coin.countries.keys), :onchange => 'showCountry()' %>
-        <button type="submit"> Enviar </button>
+        <%= select_tag :country, options_for_select(Coin.countries.keys) %>
+        <button type="submit"> Show </button>
         </form>
       </th> 
       <th scope="col"> Year   </th>
@@ -24,26 +23,36 @@
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
   </thead>
-
-      <% for i in Coin.introducedeuros[params[:country].downcase]..Date.current.year %> 
+      <% counter = 0 %>
+      <% sumcounter = 0.0 %>
+      <% for i in Coin.introduced_euro(params[:country])..Date.current.year %> 
       <tr>
           <td> <%= params[:country] %> </td>
           <td> <%= i %> </td>
-          </tr> 
-      </td>
-    </tr>
+          <td> <% @coin.each do |coin| %>
+                <% if coin.year.eql?(Coin.introduced_euro(params[:country])) %>
+                  <% for j in 2..11 %>
+                    <td> <% if j == 2 && coin.value == 2 %>
+                        <%= coin.value %> 
+                        <% end %>
+                    </td> 
+
+
+                    <% end %>
+                  <% end %>
+          </td>    
+      </tr>
     <% end %>
 
-    <% @coin.each do |coin| %>
+    
       <tr>
-        <td> <%= coin.country %>  
-        <%= coin.year %>
-          <%= coin.value %> 
-          <%= link_to 'Edit', edit_collection_coin_path(coin.collection, coin) %> 
-          <%= link_to 'Destroy', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <td> <%#= coin.country %>  
+        <%#= coin.year %>
+          <%#= link_to 'Edit', edit_collection_coin_path(coin.collection, coin) %> 
+          <%#= link_to 'Destroy', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
-      <% end %>
 
+        
   </tbody>
 </table>
 <br>
