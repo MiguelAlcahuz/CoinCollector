@@ -1,4 +1,15 @@
-<h1>Welcome to your CoinCollector</h1>
-
-<%= link_to 'My collection', collections_path %>
-<%= link_to 'New Collection', new_collection_path %>
+<table>
+	<body style="background-color:#d5dadc">
+	<head>
+	<th class="titlecontent">Welcome to your CoinCollector</th>
+	</head>
+		<tr>
+			<%= "If you want to browse your collections, " %>
+			<%= link_to 'click here', collections_path %>
+		</tr>
+		<tr>
+			<%= "If you want to start a new collection, " %>
+			<%= link_to 'click here', new_collection_path %>
+		</tr>
+	</body>	
+</table>
