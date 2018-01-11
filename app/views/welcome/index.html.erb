@@ -1,25 +1,23 @@
-	<h1 class="titlecontent">Welcome to your CoinCollector</h1>
-<table>
-	<body style="background-color:#d5dadc">
-	<head>
-	</head>
-		<tr>
+<h1 class="titlecontent">Welcome to your CoinCollector</h1>
+<body style="background-color:#d5dadc">
+	<% if user_signed_in? %>
+	  <p class="logcontent">
+	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  :style => 'color:#00a7cc'  %>
+	  <%#= ", " + current_user.username %>
+	  </p>
+	<% else %>
+	  <p class="logcontent">
+	  <%= link_to'Login', new_user_session_path,{:style => 'color:#00a7cc'}  %>  
+	  </p>
+	<% end %>
+	
+		<li class="bodycontent">
 			<%= "If you want to browse your collections, " %>
-			<%= link_to 'click here', collections_path %>
-		</tr>
-		<tr>
+			<%= link_to 'click here', collections_path,{:style => 'color:#00a7cc'} %>
+		</li><br />
+		<li class="bodycontent">
 			<%= "If you want to start a new collection, " %>
-			<%= link_to 'click here', new_collection_path %>
-		</tr>
-	</body>	
-</table>
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>     
-   <%= ", " + current_user.username %>  
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
+			<%= link_to 'click here', new_collection_path,{:style => 'color:#00a7cc'} %>
+		</li>
+	
+</body>	
