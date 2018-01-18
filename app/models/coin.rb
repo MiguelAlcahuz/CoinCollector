@@ -1,6 +1,6 @@
 class Coin < ApplicationRecord
 	belongs_to :collection
-
+	
 	validates :year, presence: true, numericality: true
 	validates :country, presence: true
 	validates :value, presence: true, inclusion: {in: :value, 

@@ -8,7 +8,7 @@ class CoinsController < ApplicationController
       params[:country] = "andorra"
     end
     @coin = Coin.where(country: params[:country])
-    #raise "______#{params[:country].inspect}"
+    authorize @coin
   end
 
   # GET /coins/1
@@ -19,6 +19,7 @@ class CoinsController < ApplicationController
   # GET /coins/new
   def new
     @coin = Coin.new
+    authorize @coin
   end
 
   # GET /coins/1/edit
@@ -72,6 +73,7 @@ class CoinsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
       @coin = Coin.find(params[:id])
+      authorize @coin
     end
 
     def set_collection

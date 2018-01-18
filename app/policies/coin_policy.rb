@@ -1,18 +1,18 @@
 class CoinPolicy < ApplicationPolicy
   def index?
-    user.present?
+    true
   end
  
   def create?
-    user.present?
+    true
   end
  
   def update?
-    return true if user.present? && user == coin.user
+    true
   end
  
   def destroy?
-    return true if user.present? && user == coin.user
+    true
   end
  
   private

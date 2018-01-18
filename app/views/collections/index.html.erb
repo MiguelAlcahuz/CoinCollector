@@ -19,6 +19,12 @@
 	<p class="logcontent">
 	<%= link_to 'New Collection', new_collection_path, {:style => 'color:#00a7cc'} %>
 	</p>
+	<% if user_signed_in? %>
+	  <p class="logcontent">
+	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  :style => 'color:#00a7cc'  %>
+	  <%#= ", " + current_user.username %>
+	  </p>
+	  <% end %>
 </body>
 
 

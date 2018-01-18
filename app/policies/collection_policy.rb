@@ -1,6 +1,6 @@
 class CollectionPolicy < ApplicationPolicy
   def index?
-    user.present?
+    user.present? || user.admin?
   end
  
   def create?
@@ -8,11 +8,11 @@ class CollectionPolicy < ApplicationPolicy
   end
  
   def update?
-    return true if user.present? && user == collection.user
+    return true if user.present? 
   end
  
   def destroy?
-    return true if user.present? && user == collection.user
+    return true if user.present? 
   end
  
   private
