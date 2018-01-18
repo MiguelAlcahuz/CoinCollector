@@ -7,7 +7,7 @@ class CoinsController < ApplicationController
     if params[:country].blank?
       params[:country] = "andorra"
     end
-    @coin = Coin.where(country: params[:country])
+    @coin = Coin.where(country: params[:country], id: params[:collection_id])
     authorize @coin
   end
 

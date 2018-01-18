@@ -20,12 +20,12 @@ user2.save
 
 collection1 = Collection.new()
 collection1.currency = "Euros"
-collection1.user_id = 1
+collection1.user_id = "1"
 collection1.save
 
 collection2 = Collection.new()
 collection2.currency = "Euros1"
-collection2.user_id = 2
+collection2.user_id = "2"
 collection2.save
 
 coin1 = Coin.new()
