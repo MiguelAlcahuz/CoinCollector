@@ -25,7 +25,7 @@ collection1.save
 
 collection2 = Collection.new()
 collection2.currency = "Euros1"
-collection2.user_id = "2"
+collection2.user_id = "HKD12"
 collection2.save
 
 coin1 = Coin.new()

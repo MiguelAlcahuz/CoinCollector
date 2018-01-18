@@ -1,18 +1,18 @@
 class CoinPolicy < ApplicationPolicy
   def index?
-    true
+    user.collectionist? || user.admin?
   end
  
   def create?
-    true
+    user.collectionist?
   end
  
   def update?
-    true
+    return true if user.collectionist?
   end
  
   def destroy?
-    true
+    return true if user.collectionist? 
   end
  
   private

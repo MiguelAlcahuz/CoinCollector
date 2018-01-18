@@ -5,6 +5,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,  :authentication_keys => [:login]
+  
+  enum roles: {
+  	collectionist: 0,
+  	admin: 1
+  }
+
   def login=(login)
   	@login = login
   end

@@ -1,6 +1,6 @@
 class CollectionPolicy < ApplicationPolicy
   def index?
-    user.present? || user.admin?
+    user.collectionist? || user.admin?
   end
  
   def create?
