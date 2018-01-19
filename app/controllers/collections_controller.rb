@@ -7,8 +7,10 @@ class CollectionsController < ApplicationController
   def index
     if current_user.admin?
       @collections = Collection.all
+      @q = User.ransack(params[:q])
+      @people = @q.result(distinct: true) 
     else
-    @collections = Collection.where(user_id: current_user.id) 
+      @collections = Collection.where(user_id: current_user.id) 
     end
     authorize @collections
   end
