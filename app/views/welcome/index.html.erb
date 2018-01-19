@@ -1,23 +1,21 @@
-<h1 class="titlecontent">Welcome to your CoinCollector</h1>
+<h1 class="titlecontentwelcome">Welcome to your CoinCollector</h1>
 <body style="background-color:#d5dadc">
 	<% if user_signed_in? %>
-	  <p class="logcontent">
-	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  :style => 'color:#00a7cc'  %>
+	  <p class="logcontentwelcome">
+	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  :style => 'color:#1e434c'  %>
 	  <%#= ", " + current_user.username %>
 	  </p>
 	<% else %>
-	  <p class="logcontent">
-	  <%= link_to'Login', new_user_session_path,{:style => 'color:#00a7cc'}  %>  
+	  <p class="logcontentwelcome">
+	  <%= link_to'Login', new_user_session_path,{:style => 'color:#1e434c'}  %>  
 	  </p>
 	<% end %>
 	
-		<li class="bodycontent">
-			<%= "If you want to browse your collections, " %>
-			<%= link_to 'click here', collections_path,{:style => 'color:#00a7cc'} %>
+		<li class="bodycontentwelcome">
+			<%= link_to "Browse your collections", collections_path,{:style => 'color:#1e434c'} %>
 		</li><br />
-		<li class="bodycontent">
-			<%= "If you want to start a new collection, " %>
-			<%= link_to 'click here', new_collection_path,{:style => 'color:#00a7cc'} %>
+		<li class="bodycontentwelcome">
+			<%= link_to "Start a new collection", new_collection_path,{:style => 'color:#1e434c'} %>
 		</li>
 	
 </body>	

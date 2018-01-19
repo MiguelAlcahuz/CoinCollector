@@ -3,34 +3,40 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.formattitle {
+.table-bordered{
+	width: 60%;
+}
+
+.formattitlecollection {
 	width: 100%;
 	text-align: center;
-	color: #ff6600;
-	font-size: 60px;
+	color: #e65c00;
+	font-size: 75px;
 	font-weight: 900;
 }
 
-.formatcontent {
+.formatcontentcollection {
 	width: 50%;
+	height: 45px;
 	text-align: center;
-	color: #00a7cc;
+	color: #1e434c;
 	font-weight: 900;
 }
 
-
-.formatsubheader {
+.formatsubheadercollection {
+	height: 75px;
 	text-align: center;
 	font-family: "Courier New", monospace;
 	font-weight: bold;
-	color: #514948;
-
+	color: #73605B;
+	font-size: 25px;
 }
 
-.logcontent {
+.logcontentcollection {
 	text-decoration: underline;
 	text-align: right;
 	font-size: 15px;
 	font-weight: 900;
-	color:#061283;
+	color:#1e434c;
+	margin-right: 5px;
 }

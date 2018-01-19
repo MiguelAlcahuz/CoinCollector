@@ -1,6 +1,7 @@
 class CoinPolicy < ApplicationPolicy
   def index?
-    user.collectionist? || user.admin?
+    true
+    #user.collectionist? || user.admin?
   end
  
   def create?

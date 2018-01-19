@@ -5,7 +5,11 @@ class CollectionsController < ApplicationController
   # GET /collections
   # GET /collections.json
   def index
+    if current_user.admin?
+      @collections = Collection.all
+    else
     @collections = Collection.where(user_id: current_user.id) 
+    end
     authorize @collections
   end
 

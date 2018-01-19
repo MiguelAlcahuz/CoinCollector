@@ -10,23 +10,37 @@ user1 = User.new()
 user1.email = "mikealcahuz@gmail.com"
 user1.password = "12341234"
 user1.username = "HKD"
+user1.roles = 1
 user1.save
 
 user2 = User.new()
 user2.email = "miguelalcahuz@gmail.com"
 user2.password = "12341234"
 user2.username = "HKD1"
+user2.roles = 0
 user2.save
+
+user3 = User.new()
+user3.email = "miguelalcahuz1@gmail.com"
+user3.password = "12341234"
+user3.username = "HKD2"
+user3.roles = 0
+user3.save
 
 collection1 = Collection.new()
 collection1.currency = "Euros"
-collection1.user_id = "1"
+collection1.user_id = "2"
 collection1.save
 
 collection2 = Collection.new()
 collection2.currency = "Euros1"
-collection2.user_id = "HKD12"
+collection2.user_id = "2"
 collection2.save
+
+collection3 = Collection.new()
+collection3.currency = "Euros2"
+collection3.user_id = "3"
+collection3.save
 
 coin1 = Coin.new()
 coin1.year = 2015

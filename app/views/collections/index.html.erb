@@ -1,30 +1,30 @@
-<h1 class="formattitle">Collections</h1>
+<h1 class="formattitlecollection">Collections</h1>
 <body style="background-color:#d5dadc">
 	
-	<table class="table table-bordered">
+	<table align="center" class="table-bordered">
 	        
 	<tr>	
-	<td class="formatsubheader"> CURRENCY </td>
-	<td class="formatsubheader"> OPTIONS </td>
+	<td class="formatsubheadercollection"> CURRENCY </td>
+	<td class="formatsubheadercollection"> OPTIONS </td>
 	</tr>
 	    		<% @collections.each do |collection|  %>
 	    		<tr>
-	        		<td class="formatcontent"> <%= collection.currency %></td>
-	        		<td class="formatcontent"> <%= link_to 'My coins', collection_coins_path(collection) %> | <%= link_to 'Edit', edit_collection_path(collection) %> | <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>  </td>
+	        		<td class="formatcontentcollection"> <%= collection.currency %></td>
+	        		<td class="formatcontentcollection"> <%= link_to 'My coins', collection_coins_path(collection) %> | <%= link_to 'Edit', edit_collection_path(collection) %> | <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>  </td>
 	        </tr>
 			
 	    <% end %>
 	</table>
 
-	<p class="logcontent">
-	<%= link_to 'New Collection', new_collection_path, {:style => 'color:#00a7cc'} %>
+	<p class="logcontentcollection">
+	<%= link_to 'New Collection', new_collection_path, {:style => 'color:#1e434c'} %>
 	</p>
 	<% if user_signed_in? %>
-	  <p class="logcontent">
-	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  :style => 'color:#00a7cc'  %>
+	  <p class="logcontentcollection">
+	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  :style => 'color:#1e434c'  %>
 	  <%#= ", " + current_user.username %>
 	  </p>
-	  <% end %>
+	<% end %>
 </body>
 
 
