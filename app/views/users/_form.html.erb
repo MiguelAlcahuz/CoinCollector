@@ -1,0 +1,29 @@
+<%= search_form_for(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= search_form_for @users do |f| %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.search_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.search_field :username %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <% end %>
+<% end %>

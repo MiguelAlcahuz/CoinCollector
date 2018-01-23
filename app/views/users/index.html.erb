@@ -1,0 +1,22 @@
+ <h1>Users</h1>
+ <%= search_form_for @q do |user| %>
+
+  <%= user.label :username %>
+  <%= user.search_field :username_cont %></br>
+
+  <%= user.submit %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :username) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td> <%= user.my_user_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

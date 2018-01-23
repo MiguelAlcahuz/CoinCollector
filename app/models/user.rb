@@ -12,6 +12,10 @@ class User < ApplicationRecord
   	admin: 1
   }
 
+  def my_user_name
+    self.username
+  end
+
   def set_default_role
     self.roles ||= :user
   end

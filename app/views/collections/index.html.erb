@@ -1,37 +1,37 @@
 <h1 class="formattitlecollection">Collections</h1>
 <body style="background-color:#d5dadc">
-	
-	<table align="center" class="table-bordered">
-	        
-	<tr>	
-	<td class="formatsubheadercollection"> CURRENCY </td>
-	<td class="formatsubheadercollection"> OPTIONS </td>
-	<td class="formatsubheadercollection"> COLLECTIONIST </td>
-	</tr>
-	    		<% @collections.each do |collection|  %>
-	    		<tr>
-	        		<td class="formatcontentcollection"> <%= collection.currency %></td>
-	        		<td class="formatcontentcollection"> <%= link_to 'My coins', collection_coins_path(collection) %> | <%= link_to 'Edit', edit_collection_path(collection) %> | <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>  </td>
-	        		<% if current_user.admin? %>
-	        			<td class="formatcontentcollection"> <%= collection.my_owner_username %> </td>
-	        		<% end %>
-	        </tr>
-			
-	    <% end %>
-	</table>
+    
+    <table align="center" class="table-bordered">
+            
+    <tr>    
+    <td class="formatsubheadercollection"> CURRENCY </td>
+    <td class="formatsubheadercollection"> OPTIONS </td>
+    <td class="formatsubheadercollection"> COLLECTIONIST </td>
+    </tr>
+                <% @collections.each do |collection|  %>
+                <tr>
+                    <td class="formatcontentcollection"> <%= collection.currency %></td>
+                    <td class="formatcontentcollection"> <%= link_to 'My coins', collection_coins_path(collection) %> | <%= link_to 'Edit', edit_collection_path(collection) %> | <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>  </td>
+                    <% if current_user.admin? %>
+                        <td class="formatcontentcollection"> <%= collection.my_owner_username %> </td>
+                    <% end %>
+            </tr>
+            
+        <% end %>
+    </table>
 
-	<p class="logcontentcollection">
-	<%= link_to 'New Collection', new_collection_path, class: 'linkcolor' %>
-	</p>
-	<% if user_signed_in? %>
-	  <p class="logcontentcollection">
-	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  class: 'linkcolor'  %>
-	  <%#= ", " + current_user.username %>
-	  </p>
-	<% end %>
+    <p class="logcontentcollection">
+    <%= link_to 'New Collection', new_collection_path, class: 'linkcolor' %>
+    </p>
+    <% if user_signed_in? %>
+      <p class="logcontentcollection">
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete,  class: 'linkcolor'  %>
+      <%#= ", " + current_user.username %>
+      </p>
+    <% end %>
+    <% if current_user.admin? %>
+      <p> 
+      <%= link_to 'Users',  users_path %> 
+      </p>
+    <% end %>
 </body>
-
-
-
-
-
