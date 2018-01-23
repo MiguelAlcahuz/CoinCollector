@@ -2,20 +2,20 @@
 <body style="background-color:#d5dadc">
 	<% if user_signed_in? %>
 	  <p class="logcontentwelcome">
-	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  :style => 'color:#1e434c'  %>
+	  <%= link_to 'Logout', destroy_user_session_path, method: :delete,  class: 'linkcolor'  %>
 	  <%#= ", " + current_user.username %>
 	  </p>
 	<% else %>
 	  <p class="logcontentwelcome">
-	  <%= link_to'Login', new_user_session_path,{:style => 'color:#1e434c'}  %>  
+	  <%= link_to'Login', new_user_session_path,{class: 'linkcolor'}  %>  
 	  </p>
 	<% end %>
 	
 		<li class="bodycontentwelcome">
-			<%= link_to "Browse your collections", collections_path,{:style => 'color:#1e434c'} %>
+			<%= link_to "Browse your collections", collections_path,{class: 'linkcolor'} %>
 		</li><br />
 		<li class="bodycontentwelcome">
-			<%= link_to "Start a new collection", new_collection_path,{:style => 'color:#1e434c'} %>
+			<%= link_to "Start a new collection", new_collection_path,{class: 'linkcolor'} %>
 		</li>
 	
 </body>	

@@ -1,7 +1,7 @@
 // Place all the styles related to the Collections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+$lightblue = '#1e434c';
 
 .table-bordered{
 	width: 60%;
@@ -39,4 +39,8 @@
 	font-weight: 900;
 	color:#1e434c;
 	margin-right: 5px;
+}
+
+.linkcolor:visited {
+	color: $lightblue;
 }
