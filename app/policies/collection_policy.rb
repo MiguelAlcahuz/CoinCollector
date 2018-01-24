@@ -1,18 +1,18 @@
 class CollectionPolicy < ApplicationPolicy
   def index?
-    user.collectionist? || user.admin?
+    current_user.collectionist? || current_user.admin?
   end
  
   def create?
-    user.present?
+    current_user.collectionist? || current_user.admin?
   end
  
   def update?
-    return true if user.present? 
+    return true if current_user.collectionist? || current_user.admin?
   end
  
   def destroy?
-    return true if user.present? 
+    return true if current_user.collectionist? || current_user.admin?
   end
  
   private

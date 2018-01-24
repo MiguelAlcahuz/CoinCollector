@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	def index
 		if current_user.admin?
 			@q = User.ransack(params[:q])
-  		@users = @q.result(distinct: true)
+  			@users = @q.result(distinct: true)
 		end
 	end
 
