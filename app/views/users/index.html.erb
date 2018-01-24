@@ -6,6 +6,7 @@
 
   <%= user.submit %>
 <% end %>
+
 <table>
   <thead>
     <tr>
@@ -15,7 +16,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td> <%= user.my_user_name %></td>
+        <td> <%= user.my_user_name %> | <%= link_to 'Edit', edit_user_path(user), {:style => 'color:#00a7cc'} %></td>
       </tr>
     <% end %>
   </tbody>

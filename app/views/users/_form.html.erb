@@ -1,4 +1,4 @@
-<%= search_form_for(model: user, local: true) do |form| %>
+<%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,20 +10,24 @@
       </ul>
     </div>
   <% end %>
-  <%= search_form_for @users do |f| %>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.search_field :email %>
+    <%= form.text_field :email %>
   </div>
 
   <div class="field">
     <%= form.label :username %>
-    <%= form.search_field :username %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :roles %>
+    <%= form.text_field :roles %>
   </div>
   
   <div class="actions">
     <%= form.submit %>
   </div>
-  <% end %>
+ 
 <% end %>
