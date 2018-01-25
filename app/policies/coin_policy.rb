@@ -1,23 +1,39 @@
 class CoinPolicy < ApplicationPolicy
+
+  def initialize(coin, collection, user)
+    @coin = coin
+    @collection = collection
+    @user = user
+  end
+
   def index?
-    current_user.collectionist? || current_user.admin?
+    (belongs_to_user? && belongs_to_collection?) || user.admin? 
+  end
+
+  def show?
+    (belongs_to_user? && belongs_to_collection?) || user.admin? 
   end
  
   def create?
-    current_user.collectionist? || current_user.admin?
+    (belongs_to_user? && belongs_to_collection?) || user.admin? 
   end
  
   def update?
-    return true if current_user.collectionist? || current_user.admin?
-  end
+    return true if (belongs_to_user? && belongs_to_collection?) || user.admin? 
+
  
   def destroy?
-    return true if current_user.collectionist? || current_user.admin?
+    return true if (belongs_to_user? && belongs_to_collection?) || user.admin? 
+
   end
  
   private
  
-    def article
-      record
+    def belongs_to_collection?
+      @collection.id = @coin.collection_id
     end
+
+    def belongs_to_user?
+    @collection.user_id == @user.id
+  end
 end
