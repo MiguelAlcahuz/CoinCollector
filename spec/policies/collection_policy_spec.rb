@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CollectionPolicy type: :policy do
+RSpec.describe CollectionPolicy do
 
   let(:collectionist) {User.new(id: 1, email: 'mikelacahuz@gmail.com', username: 'el collecionista', roles: 'collectionist')}
   let(:admin) {User.new(id: 2, email: 'miguelalcahuz@gmail.com', username: 'iamthebosshere', roles: 'admin')}

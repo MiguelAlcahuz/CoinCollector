@@ -1,14 +1,11 @@
 class Coin < ApplicationRecord
 	belongs_to :collection
-	belongs_to :user
+	
 	validates :year, presence: true, numericality: true
 	validates :country, presence: true
 	validates :value, presence: true, inclusion: {in: :value, 
 		message: "This type of coin does not exist"}
 		
-	def self.by_country(c)
-		where(country: 'c').select('coins.*')
-	end
 	
 
 	def self.introduced_euro(country) 

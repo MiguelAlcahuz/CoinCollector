@@ -6,23 +6,23 @@ class CollectionPolicy < ApplicationPolicy
   end
 
   def index?
-    user.collectionist? || user.admin? 
+    @user.collectionist? || @user.admin? 
   end
 
   def show?
-    belongs_to_user? || user.admin?
+    belongs_to_user? || @user.admin?
   end
  
   def create?
-     user.admin? || belongs_to_user?
+     @user.admin? || belongs_to_user?
   end
  
   def update?
-    return true if user.admin? || belongs_to_user?
+    return true if @user.admin? || belongs_to_user?
   end
  
   def destroy?
-    return true if user.admin? || belongs_to_user?
+    return true if @user.admin? || belongs_to_user?
   end
  
 
