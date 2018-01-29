@@ -7,8 +7,8 @@ class CoinsController < ApplicationController
     if params[:country].blank?
       params[:country] = "andorra"
     end
-    @coin = Coin.where(country: params[:country], collection_id: params[:collection_id])
-    authorize @coin
+    @coins = Coin.find_by(params[:collection_id])
+    #authorize @coin
   end
 
   # GET /coins/1
@@ -82,6 +82,6 @@ class CoinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coin_params
-      params.require(:coin).permit(:year, :country, :value, :collection_id)
+      params.require(:coin).permit(:year, :country, :value)
     end
 end

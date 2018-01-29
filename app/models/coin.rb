@@ -1,12 +1,11 @@
 class Coin < ApplicationRecord
-	#belongs_to :collection
+	has_and_belongs_to_many :collections
 	
 	validates :year, presence: true, numericality: true
 	validates :country, presence: true
 	validates :value, presence: true		
 	
 
-	def self.introduced_euro(country) 
 	h = {
 		"andorra": 2015,
 		"austria": 1999,
@@ -32,10 +31,11 @@ class Coin < ApplicationRecord
 		"spain": 1999, 
 		"vatican": 1999
 	}
-	h.each { |k,v| if country.eql?(k.to_s) 
-						return v 
-				   end
-			}
+	def self.introduced_euro(country) 
+		h.each { |k,v| if country.eql?(k.to_s) 
+										return v 
+					   			 end
+		}
 	end
 	
 	def self.coin_validator(country, year) 

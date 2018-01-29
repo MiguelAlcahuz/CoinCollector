@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	def index
 		if current_user.admin?
 			@q = User.ransack(params[:q])
-  			@users = @q.result(distinct: true)
+  		@users = @q.result(distinct: true)
 		end
 	end
 
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   private
 
     def set_user
-      @user = User.find(params[:id])
+    	@user = User.find(params[:id])
     end
   # Never trust parameters from the scary internet, only allow the white list through.
 	  def user_params

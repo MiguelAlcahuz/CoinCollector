@@ -46,6 +46,5 @@ coin1 = Coin.new()
 coin1.year = 2015
 coin1.value = 0.01
 coin1.country = 0
-coin1.collection_id = 1
 coin1.save
 
