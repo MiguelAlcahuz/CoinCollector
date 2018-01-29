@@ -1,6 +1,7 @@
 class ApplicationPolicy
   
-  
+
+
   def index?
     false
   end

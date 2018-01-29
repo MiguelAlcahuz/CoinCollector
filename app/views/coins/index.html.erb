@@ -24,6 +24,7 @@
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
   </thead>
+    <%if Coin.coin_validator(params[:country], params[:year]) == false %>
       <% for i in Coin.introduced_euro(params[:country])..Date.current.year %> 
         <tr>
       <% counter = 0 %>
@@ -95,6 +96,9 @@
           </td>
         </tr>
       <% end %>
+      <% else raise puts" Coin year can't be previous to its introduced" %>
+      <% end %>
+    <% end %>
 </table>
 
 <%= link_to 'New Coin', new_collection_coin_path(@collection) %>

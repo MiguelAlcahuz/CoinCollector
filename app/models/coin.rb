@@ -1,11 +1,9 @@
 class Coin < ApplicationRecord
-	belongs_to :collection
+	#belongs_to :collection
 	
 	validates :year, presence: true, numericality: true
 	validates :country, presence: true
-	validates :value, presence: true, inclusion: {in: :value, 
-		message: "This type of coin does not exist"}
-		
+	validates :value, presence: true		
 	
 
 	def self.introduced_euro(country) 
@@ -40,10 +38,8 @@ class Coin < ApplicationRecord
 			}
 	end
 	
-	def coin_validator 
-		if(year < introduced_euro[:country]) 
-			raise  "This country didn't have EURO currency until #{introducedEuro[:country]}"
-		end
+	def self.coin_validator(country, year) 
+		return year < introduced_euro[:country]
 	end
 
 	# COUNTRIES WITH EURO AS THEIR CURRENCY

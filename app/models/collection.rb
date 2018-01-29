@@ -7,6 +7,10 @@ class Collection < ApplicationRecord
   	self.user.username
   end
 
+  def my_id
+    self.id
+  end
+
   def total_amount
   	
   end
