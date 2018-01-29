@@ -33,7 +33,7 @@
             <td> <%= i %> </td>
             <% for j in 2..11 %>
             <td>
-              <% @coin.each do |coin| %>
+              <% @coins.each do |coin| %>
                 <% if coin.year.eql?(i) %>
                     <% if j == 2 && coin.value.eql?("twoeuro") %>
                           <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
@@ -98,7 +98,6 @@
       <% end %>
       <% else raise puts" Coin year can't be previous to its introduced" %>
       <% end %>
-    <% end %>
 </table>
 
 <%= link_to 'New Coin', new_collection_coin_path(@collection) %>

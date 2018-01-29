@@ -1,21 +1,9 @@
 class Collection < ApplicationRecord
-  has_many :coins
+  has_and_belongs_to_many :coins
   belongs_to :user
   validates :currency, presence: true, uniqueness: true
 
   def my_owner_username
   	self.user.username
   end
-
-  def my_id
-    self.id
-  end
-
-  def total_amount
-  	
-  end
-
-  def sumTotalAmount
-  end
-  
 end

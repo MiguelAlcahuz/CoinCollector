@@ -4,7 +4,6 @@ class CreateCoins < ActiveRecord::Migration[5.1]
       t.integer :year
       t.integer :country
       t.float :value
-      t.references :collection, foreign_key: true
       t.timestamps
     end
   end

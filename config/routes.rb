@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   
   resources :users
-  devise_for :users
   resources :collections do
   	resources :coins 
   end
