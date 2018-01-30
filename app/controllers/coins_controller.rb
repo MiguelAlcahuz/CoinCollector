@@ -6,8 +6,10 @@ class CoinsController < ApplicationController
   def index
     if params[:country].blank?
       params[:country] = "andorra"
+      params[:year] = 2015
     end
-    @coins = Coin.find_by(params[:collection_id])
+
+    @coins = @collection.coins
     #authorize @coin
   end
 
@@ -19,7 +21,7 @@ class CoinsController < ApplicationController
   # GET /coins/new
   def new
     @coin = Coin.new
-    authorize @coin
+    #authorize @coin
   end
 
   # GET /coins/1/edit
@@ -30,15 +32,18 @@ class CoinsController < ApplicationController
   # POST /coins.json
   def create
     @coin = Coin.new(coin_params)
-    @coin.collection = @collection
+    if Coin.introduced_euro(coin_params[:country]) <=  coin_params[:year].to_i
     respond_to do |format|
       if @coin.save
-        format.html { redirect_to collection_coins_path(@coin.collection), notice: 'Coin was successfully created.' }
+        format.html { redirect_to collection_coins_path(@collection), notice: 'Coin was successfully created.' }
         format.json { render :show, status: :created, location: @coin }
       else
         format.html { render :new }
         format.json { render json: @coin.errors, status: :unprocessable_entity }
       end
+    end
+    else
+      format.html { redirect_to collection_coins_path(@collection, @coin) ,notice: 'Unable to create' }
     end
   end
 
@@ -60,10 +65,10 @@ class CoinsController < ApplicationController
   # DELETE /coins/1
   # DELETE /coins/1.json
   def destroy
-    @coin.collection = @collection
+    
     @coin.destroy
     respond_to do |format|
-      format.html { redirect_to collection_coins_path(@coin.collection), notice: 'Coin was successfully destroyed.' }
+      format.html { redirect_to collection_coins_path(@collection), notice: 'Coin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,7 +78,7 @@ class CoinsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
       @coin = Coin.find(params[:id])
-      authorize @coin
+      #authorize @coin
     end
 
     def set_collection

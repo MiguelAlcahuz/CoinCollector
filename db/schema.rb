@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20180129104649) do
 
+
   create_table "coincollections", id: false, force: :cascade do |t|
     t.integer "coin_id"
     t.integer "collection_id"
   end
+
+
 
   create_table "coins", force: :cascade do |t|
     t.integer "year"
@@ -23,6 +26,15 @@ ActiveRecord::Schema.define(version: 20180129104649) do
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+  end
+
+  create_table "coins_collections", id: false, force: :cascade do |t|
+    t.integer "coin_id", null: false
+    t.integer "collection_id", null: false
+    t.index ["coin_id", "collection_id"], name: "coins_collections_index"
+    t.index ["collection_id", "coin_id"], name: "collections_coins_index"
+>>>>>>> jointable_coin_collection
   end
 
   create_table "collections", force: :cascade do |t|

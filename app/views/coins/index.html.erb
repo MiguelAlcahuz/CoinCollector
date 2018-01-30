@@ -24,15 +24,16 @@
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
   </thead>
-    <%if Coin.coin_validator(params[:country], params[:year]) == false %>
+    
       <% for i in Coin.introduced_euro(params[:country])..Date.current.year %> 
-        <tr>
-      <% counter = 0 %>
-      <% sumcounter = 0.0 %>
-            <td> <%= params[:country].upcase %> </td>
-            <td> <%= i %> </td>
-            <% for j in 2..11 %>
+        <tr> 
+          <% counter = 0 %>
+          <% sumcounter = 0.0 %>
+          <td> <%= params[:country].upcase %> </td>
+          <td> <%= i %> </td>
+          <% for j in 2..11 %>
             <td>
+<<<<<<< HEAD
               <% @coins.each do |coin| %>
                 <% if coin.year.eql?(i) %>
                     <% if j == 2 && coin.value.eql?("twoeuro") %>
@@ -40,64 +41,80 @@
                           <% counter += 1 %>
                           <% sumcounter += 2 %>
                     <% end %>
-
-                    <% if j == 3 && coin.value.eql?("oneeuro") %>
-                          <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                          <% counter += 1 %>
-                          <% sumcounter += 1 %>
-                    <% end %>
-
-                    <% if j == 4 && coin.value.eql?("fiftycent") %>
-                          <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                          <% counter += 1 %>
-                          <% sumcounter += 0.5 %>
-                    <% end %>
-
-                    <% if j == 5 && coin.value.eql?("twentycent") %>
-                          <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                          <% counter += 1 %>
-                          <% sumcounter += 0.2 %>
-                    <% end %>
-
-                   <% if j == 6 && coin.value.eql?("tencent") %>
-                          <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                          <% counter += 1 %>
-                          <% sumcounter += 0.1%>
-                    <% end %>
-
-                    <% if j == 7 && coin.value.eql?("fivecent") %>
-                          <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                          <% counter += 1 %>
-                          <% sumcounter += 0.05 %>
-                    <% end %>
-
-                    <% if j == 8 && coin.value.eql?("twocent") %>
-                          <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> 
-                          <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                          <% counter += 1 %>
-                          <% sumcounter += 0.02 %>
-                    <% end %>
-                    <% if j == 9 && coin.value.eql?("onecent")  %>
-                          <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> 
-                          <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                          <% counter += 1 %>
-                          <% sumcounter += 0.01 %>
-                    <% end %>
+=======
+            <% @coins.each do |coin| %>
+              <% if coin.year.eql?(i) %>
+                <% if j == 2 && coin.value.eql?("twoeuro") %>
+                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% counter += 1 %>
+                  <% sumcounter += 2 %>
                 <% end %>
-              <% end %>
-              <% if j == 10 %>
-                          <%= counter %>
-                        <% end %>
+>>>>>>> jointable_coin_collection
 
-                    <% if j == 11 %>
-                          <%= sumcounter %>    
-                    <% end %>     
-            <% end %> 
-          </td>
+                <% if j == 3 && coin.value.eql?("oneeuro") %>
+                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% counter += 1 %>
+                  <% sumcounter += 1 %>
+                <% end %>
+
+                <% if j == 4 && coin.value.eql?("fiftycent") %>
+                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% counter += 1 %>
+                  <% sumcounter += 0.5 %>
+                <% end %>
+
+                <% if j == 5 && coin.value.eql?("twentycent") %>
+                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% counter += 1 %>
+                  <% sumcounter += 0.2 %>
+                <% end %>
+
+               <% if j == 6 && coin.value.eql?("tencent") %>
+                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% counter += 1 %>
+                  <% sumcounter += 0.1%>
+                <% end %>
+
+                <% if j == 7 && coin.value.eql?("fivecent") %>
+                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% counter += 1 %>
+                  <% sumcounter += 0.05 %>
+                <% end %>
+
+                <% if j == 8 && coin.value.eql?("twocent") %>
+                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> 
+                  <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% counter += 1 %>
+                  <% sumcounter += 0.02 %>
+                <% end %>
+
+                <% if j == 9 && coin.value.eql?("onecent")  %>
+                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> 
+                  <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  <% counter += 1 %>
+                  <% sumcounter += 0.01 %>
+                <% end %>
+              <% end #fin de if coin.each.eql?%> 
+            <% end # fin de @coin.each%>
+
+            <% if j == 10 %>
+              <%= counter %>
+            <% end %>
+
+            <% if j == 11 %>
+              <%= sumcounter %>    
+            <% end %>     
+          <% end # fin de for 2..11%> 
+            </td>
         </tr>
+<<<<<<< HEAD
       <% end %>
       <% else raise puts" Coin year can't be previous to its introduced" %>
       <% end %>
+=======
+      <% end #fin de coin.introduced_euro%>
+    
+>>>>>>> jointable_coin_collection
 </table>
 
 <%= link_to 'New Coin', new_collection_coin_path(@collection) %>
