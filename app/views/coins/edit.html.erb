@@ -3,6 +3,6 @@
 
 <%= render 'form', coin: @coin, collection: @collection %>
 
-<%= link_to 'Show', collection_coin_path(@coin.collection, @coin) %> |
-<%= link_to 'Back', collection_coins_path(@coin.collection) %>
+<%= link_to 'Show', collection_coin_path(@collection, @coin) %> |
+<%= link_to 'Back', collection_coins_path(@collection) %>
 </body>

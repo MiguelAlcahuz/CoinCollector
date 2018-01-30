@@ -6,41 +6,42 @@ class Coin < ApplicationRecord
 	validates :value, presence: true		
 	
 
-	h = {
-		"andorra": 2015,
-		"austria": 1999,
-		"belgium": 1999, 
-		"ciprus": 2008,	
-		"estonia": 2011, 
-		"finland": 1999, 
-		"france": 1999, 
-		"germany": 1999, 
-		"greece": 2001,	
-		"ireland": 1999, 
-		"italy": 1999, 
-		"latvia": 2014, 
-		"lithuania": 2015, 
-		"luxemburg": 1999, 
-		"malta": 2007, 
-		"monaco": 1999,
-		"netherlands": 1999,	
-		"portugal": 1999, 
-		"sanmarino": 1999,
-		"slovakia": 2008, 
-		"slovenia": 2007, 
-		"spain": 1999, 
-		"vatican": 1999
-	}
+	  
+
 	def self.introduced_euro(country) 
+
+		h = {
+			"andorra": 2015,
+			"austria": 1999,
+			"belgium": 1999, 
+			"ciprus": 2008,	
+			"estonia": 2011, 
+			"finland": 1999, 
+			"france": 1999, 
+			"germany": 1999, 
+			"greece": 2001,	
+			"ireland": 1999, 
+			"italy": 1999, 
+			"latvia": 2014, 
+			"lithuania": 2015, 
+			"luxemburg": 1999, 
+			"malta": 2007, 
+			"monaco": 1999,
+			"netherlands": 1999,	
+			"portugal": 1999, 
+			"sanmarino": 1999,
+			"slovakia": 2008, 
+			"slovenia": 2007, 
+			"spain": 1999, 
+			"vatican": 1999
+		}
 		h.each { |k,v| if country.eql?(k.to_s) 
 										return v 
 					   			 end
 		}
 	end
 	
-	def self.coin_validator(country, year) 
-		return year < introduced_euro[:country]
-	end
+	
 
 	# COUNTRIES WITH EURO AS THEIR CURRENCY
 

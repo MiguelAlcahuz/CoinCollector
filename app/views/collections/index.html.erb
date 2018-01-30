@@ -6,13 +6,15 @@
     <tr>    
     <td class="formatsubheadercollection"> CURRENCY </td>
     <td class="formatsubheadercollection"> OPTIONS </td>
+    <% if current_user.admin? %>
+    <td class="formatsubheadercollection"> COLLECTIONIST </td>
+    <% end %>
     </tr>
                 <% @collections.each do |collection|  %>
                 <tr>
                     <td class="formatcontentcollection"> <%= collection.currency %></td>
                     <td class="formatcontentcollection"> <%= link_to 'My coins', collection_coins_path(collection) %> | <%= link_to 'Edit', edit_collection_path(collection) %> | <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>  </td>
                     <% if current_user.admin? %>
-                       <td class="formatsubheadercollection"> COLLECTIONIST </td>
                         <td class="formatcontentcollection"> <%= collection.my_owner_username %> </td>
                     <% end %>
             </tr>

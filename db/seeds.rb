@@ -42,9 +42,8 @@ collection3.currency = "Euros2"
 collection3.user_id = "3"
 collection3.save
 
-coin1 = Coin.new()
-coin1.year = 2015
-coin1.value = 0.01
-coin1.country = 0
-coin1.save
-
+coin2 = Coin.new()
+coin2.year = 2015
+coin2.value = 0.01
+coin2.country = 1
+coin2.save
