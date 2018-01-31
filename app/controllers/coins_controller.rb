@@ -9,7 +9,6 @@ class CoinsController < ApplicationController
       params[:year] = 2015
     end
     @coins = @collection.coins
-    raise "#{@coins.inspect}"
   end
 
   # GET /coins/1
