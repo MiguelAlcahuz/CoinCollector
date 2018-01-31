@@ -8,9 +8,8 @@ class CoinsController < ApplicationController
       params[:country] = "andorra"
       params[:year] = 2015
     end
-
     @coins = @collection.coins
-    raise @collection.coins.inspect
+    raise "#{@coins.inspect}"
   end
 
   # GET /coins/1
