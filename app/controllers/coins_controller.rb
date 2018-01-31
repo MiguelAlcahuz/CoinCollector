@@ -4,13 +4,13 @@ class CoinsController < ApplicationController
   # GET /coins
   # GET /coins.json
   def index
-    if params[:country].blank?
+    if params[:country].blank? && params[:year].blank?
       params[:country] = "andorra"
       params[:year] = 2015
     end
 
     @coins = @collection.coins
-    #authorize @coin
+    raise @collection.coins.inspect
   end
 
   # GET /coins/1
@@ -21,7 +21,6 @@ class CoinsController < ApplicationController
   # GET /coins/new
   def new
     @coin = Coin.new
-    #authorize @coin
   end
 
   # GET /coins/1/edit
@@ -78,7 +77,6 @@ class CoinsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
       @coin = Coin.find(params[:id])
-      #authorize @coin
     end
 
     def set_collection

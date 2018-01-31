@@ -6,27 +6,28 @@ class CoinPolicy < ApplicationPolicy
   end
 
   def index?
-    #belongs_to_collection?  
+    belongs_to_collection?  
   end
 
   def show?
-    #belongs_to_collection?  
+    belongs_to_collection?  
   end
  
   def create?
-    #belongs_to_collection?  
+    belongs_to_collection?  
   end
  
   def update?
-    #return true if belongs_to_collection?  
+    return true if belongs_to_collection?  
   end
  
   def destroy?
-    #return true if  belongs_to_collection?  
+    return true if  belongs_to_collection?  
   end
  
   private
  
   def belongs_to_collection?
+    
   end
 end

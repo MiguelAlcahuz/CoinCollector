@@ -24,7 +24,6 @@
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
   </thead>
-    
       <% for i in Coin.introduced_euro(params[:country])..Date.current.year %> 
         <tr> 
           <% counter = 0 %>
@@ -33,15 +32,6 @@
           <td> <%= i %> </td>
           <% for j in 2..11 %>
             <td>
-<<<<<<< HEAD
-              <% @coins.each do |coin| %>
-                <% if coin.year.eql?(i) %>
-                    <% if j == 2 && coin.value.eql?("twoeuro") %>
-                          <%= link_to 'X', edit_collection_coin_path(coin.collection, coin) %> <%= link_to 'D', collection_coin_path(coin.collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                          <% counter += 1 %>
-                          <% sumcounter += 2 %>
-                    <% end %>
-=======
             <% @coins.each do |coin| %>
               <% if coin.year.eql?(i) %>
                 <% if j == 2 && coin.value.eql?("twoeuro") %>
@@ -49,7 +39,6 @@
                   <% counter += 1 %>
                   <% sumcounter += 2 %>
                 <% end %>
->>>>>>> jointable_coin_collection
 
                 <% if j == 3 && coin.value.eql?("oneeuro") %>
                   <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
@@ -107,14 +96,7 @@
           <% end # fin de for 2..11%> 
             </td>
         </tr>
-<<<<<<< HEAD
-      <% end %>
-      <% else raise puts" Coin year can't be previous to its introduced" %>
-      <% end %>
-=======
-      <% end #fin de coin.introduced_euro%>
-    
->>>>>>> jointable_coin_collection
+      <% end %>    
 </table>
 
 <%= link_to 'New Coin', new_collection_coin_path(@collection) %>

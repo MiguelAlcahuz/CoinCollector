@@ -35,7 +35,6 @@ class Coin < ApplicationRecord
 			"spain": 1999, 
 			"vatican": 1999
 		}
->>>>>>> jointable_coin_collection
 		h.each { |k,v| if country.eql?(k.to_s) 
 										return v 
 					   			 end
