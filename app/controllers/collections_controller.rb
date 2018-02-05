@@ -49,6 +49,7 @@ class CollectionsController < ApplicationController
   # PATCH/PUT /collections/1
   # PATCH/PUT /collections/1.json
   def update
+    @collection.user = current_user
     @collection = Collection.find(params[:id])
     @collection.coins << Coin.find(params[:coin_id])
     respond_to do |format|

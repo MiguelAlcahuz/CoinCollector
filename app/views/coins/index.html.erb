@@ -32,7 +32,7 @@
           <% sumcounter = 0 %>
           <% counter = 0 %>
       <% Coin.where(country: params[:country], year: i).order(year: :asc, value: :desc).each do |coin| %>  
-      <td>  
+      <td> 
             <%if @coins.include?(coin) %>
               LA TENGO
               <% sumcounter += Coin.get_coin_value(coin.value)%>

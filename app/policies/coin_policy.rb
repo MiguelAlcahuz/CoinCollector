@@ -6,28 +6,27 @@ class CoinPolicy < ApplicationPolicy
   end
 
   def index?
-    belongs_to_collection?  
+    @user.collectionist? || @user.admin?  
   end
 
   def show?
-    belongs_to_collection?  
+   @user.admin?
   end
  
   def create?
-    belongs_to_collection?  
+   @user.admin?
   end
  
   def update?
-    return true if belongs_to_collection?  
+    return true if @user.admin?
   end
  
   def destroy?
-    return true if  belongs_to_collection?  
+    return true if @user.admin?
   end
- 
+  
   private
- 
   def belongs_to_collection?
-    
+    return @collection.coins.include?(coin)
   end
 end

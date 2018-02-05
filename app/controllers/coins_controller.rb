@@ -28,11 +28,13 @@ class CoinsController < ApplicationController
   # POST /coins.json
   def create
     @coin = Coin.new(coin_params)
-    respond_to do |format|
-      if @coin.save
-        format.html { redirect_to collection_coins_path(@collection, @coin), notice: 'Coin was successfully created.' }
-      else
-        format.html { render :new }
+    if current_user.admin?
+      respond_to do |format|
+        if @coin.save
+          format.html { redirect_to collection_coins_path(@collection, @coin), notice: 'Coin was successfully created.' }
+        else
+          format.html { render :new }
+        end
       end
     end
   end
