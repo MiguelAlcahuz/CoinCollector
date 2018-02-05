@@ -4,9 +4,8 @@ class CoinsController < ApplicationController
   # GET /coins
   # GET /coins.json
   def index
-    if params[:country].blank? && params[:year].blank?
+    if params[:country].blank? 
       params[:country] = "andorra"
-      params[:year] = 2015
     end
     @coins = @collection.coins
   end
@@ -29,18 +28,12 @@ class CoinsController < ApplicationController
   # POST /coins.json
   def create
     @coin = Coin.new(coin_params)
-    if Coin.introduced_euro(coin_params[:country]) <=  coin_params[:year].to_i
     respond_to do |format|
       if @coin.save
-        format.html { redirect_to collection_coins_path(@collection), notice: 'Coin was successfully created.' }
-        format.json { render :show, status: :created, location: @coin }
+        format.html { redirect_to collection_coins_path(@collection, @coin), notice: 'Coin was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @coin.errors, status: :unprocessable_entity }
       end
-    end
-    else
-      format.html { redirect_to collection_coins_path(@collection, @coin) ,notice: 'Unable to create' }
     end
   end
 
@@ -83,6 +76,6 @@ class CoinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coin_params
-      params.require(:coin).permit(:year, :country, :value)
+      params.permit(:year, :country, :value)
     end
 end

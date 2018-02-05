@@ -1,13 +1,9 @@
 class Coin < ApplicationRecord
 	has_and_belongs_to_many :collections
-	
 	validates :year, presence: true, numericality: true
 	validates :country, presence: true
 	validates :value, presence: true		
 	
-
-	  
-
 	def self.introduced_euro(country) 
 
 		h = {
@@ -21,7 +17,7 @@ class Coin < ApplicationRecord
 			"germany": 1999, 
 			"greece": 2001,	
 			"ireland": 1999, 
-			"italy": 1999, 
+			"italy ": 1999, 
 			"latvia": 2014, 
 			"lithuania": 2015, 
 			"luxemburg": 1999, 
@@ -118,11 +114,20 @@ class Coin < ApplicationRecord
 		twoeuro: TWOEURO
 	}
 
-	def constructor(year,country,value) 
-		@year = year
-		@country = country
-		@value = value
+	def self.get_coin_value(val) 
+		values.each { |k,v| if val.eql?(k)
+				return v
+			end
+		}
+
+
+		h.each { |k,v| if country.eql?(k.to_s) 
+										return v 
+					   			 end
+		}
 	end
+
+
 
 
 	def select_options_tag(name='',select_options={},options={})

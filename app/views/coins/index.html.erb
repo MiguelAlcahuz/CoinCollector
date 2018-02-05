@@ -24,115 +24,40 @@
       <th scope="col">Totalcoin</th>
       <th scope="col">Sumtotalcoin</th>
   </thead>
-      <% for i in Coin.introduced_euro(params[:country])..Date.current.year %> 
-        <tr> 
-          <% counter = 0 %>
-          <% sumcounter = 0.0 %>
+  <tbody>
+    <tr>
+      <% for i in Coin.introduced_euro(params[:country])..Date.current.year %>
           <td> <%= params[:country].upcase %> </td>
-          <td> <%= i %> </td>
-          <% for j in 2..11 %>
-            <td>
-            <% @coins.each do |coin| %>
-              <% if coin.year.eql?(i) %>
-                <% if j == 2 && coin.value.eql?("twoeuro") %>
-                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                  <%= @collection.id %>
-                  <%= coin.id %>
-                  <%= form_with(url: collection_path(@collection),method: :get, local: true) do |form| %> 
-                    <button type="button"> Update </button>
-                  <% end %>
-                  <% counter += 1 %>
-                  <% sumcounter += 2 %>
-                <% end %>
-
-                <% if j == 3 && coin.value.eql?("oneeuro") %>
-                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> <%= @collection.id %>
-                  <%= coin.id %>
-                  <%= form_with(url: collection_path(@collection),method: :get, local: true) do |form| %> 
-                    <button type="button"> Update </button>
-                  <% end %>
-                  <% counter += 1 %>
-                  <% sumcounter += 1 %>
-                <% end %>
-
-                <% if j == 4 && coin.value.eql?("fiftycent") %>
-                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> <%= @collection.id %>
-                  <%= coin.id %>
-                  <%= form_with(url: collection_path(@collection),method: :get, local: true) do |form| %> 
-                    <button type="button"> Update </button>
-                  <% end %>
-                  <% counter += 1 %>
-                  <% sumcounter += 0.5 %>
-                <% end %>
-
-                <% if j == 5 && coin.value.eql?("twentycent") %>
-                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> <%= @collection.id %>
-                  <%= coin.id %>
-                  <%= form_with(url: collection_path(@collection),method: :get, local: true) do |form| %> 
-                    <button type="button"> Update </button>
-                  <% end %>
-                  <% counter += 1 %>
-                  <% sumcounter += 0.2 %>
-                <% end %>
-
-               <% if j == 6 && coin.value.eql?("tencent") %>
-                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> <%= @collection.id %>
-                  <%= coin.id %>
-                  <%= form_with(url: collection_path(@collection),method: :get, local: true) do |form| %> 
-                    <button type="button"> Update </button>
-                  <% end %>
-                  <% counter += 1 %>
-                  <% sumcounter += 0.1%>
-                <% end %>
-
-                <% if j == 7 && coin.value.eql?("fivecent") %>
-                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> <%= @collection.id %>
-                  <%= coin.id %>
-                  <%= form_with(url: collection_path(@collection),method: :get, local: true) do |form| %> 
-                    <button type="button"> Update </button>
-                  <% end %>
-                  <% counter += 1 %>
-                  <% sumcounter += 0.05 %>
-                <% end %>
-
-                <% if j == 8 && coin.value.eql?("twocent") %>
-                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> 
-                  <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                  <%= @collection.id %>
-                  <%= coin.id %>
-                  <%= form_with(url: collection_path(@collection),method: :get, local: true) do |form| %> 
-                    <button type="button"> Update </button>
-                  <% end %>
-                  <% counter += 1 %>
-                  <% sumcounter += 0.02 %>
-                <% end %>
-
-                <% if j == 9 && coin.value.eql?("onecent")  %>
-                  <%= link_to 'X', edit_collection_coin_path(@collection, coin) %> 
-                  <%= link_to 'D', collection_coin_path(@collection, coin), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                  <%= @collection.id %>
-                  <%= coin.id %>
-
-                  <%= form_with(url: collection_path(@collection),method: :get, local: true) do |form| %> 
-                    <button type="button"> Update </button>
-                  <% end %>
-                  <% counter += 1 %>
-                  <% sumcounter += 0.01 %>
-                <% end %>
-              <% end #fin de if coin.each.eql?%> 
-            <% end # fin de @coin.each%>
-
-            <% if j == 10 %>
-              <%= counter %>
+          <td> <%= i %></td>
+          <% sumcounter = 0 %>
+          <% counter = 0 %>
+      <% Coin.where(country: params[:country], year: i).order(year: :asc, value: :desc).each do |coin| %>  
+      <td>  
+            <%if @coins.include?(coin) %>
+              LA TENGO
+              <% sumcounter += Coin.get_coin_value(coin.value)%>
+              <% counter += 1 %>
+              
+            <% else %>
+            
+              <%= form_with(url: collection_path(@collection), method: :put, local: true) do |form| %>
+                ID<input type="text" name="coin_id" value="<%=coin.id%>">
+                COLLECTION<input type="text" name="collection_id" value="<%=@collection.id%>">
+                <button type="submit"> CHECK </button>
+              <% end %>
             <% end %>
+            
 
-            <% if j == 11 %>
-              <%= sumcounter %>    
-            <% end %>     
-          <% end # fin de for 2..11%> 
-            </td>
-        </tr>
-      <% end %>    
+       
+        </td>
+      <% end %>
+        <td> <%= counter %> </td>
+        <td> <%= sumcounter %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+
+
 </table>
 
 <%= link_to 'New Coin', new_collection_coin_path(@collection) %>

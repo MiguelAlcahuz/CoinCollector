@@ -42,16 +42,14 @@ collection3.currency = "Euros2"
 collection3.user_id = "3"
 collection3.save
 
+(Coin.introduced_euro('andorra')..Date.current.year).each do |year|
+	Coin.values.keys.each do |value| 
+		Coin.create(country: 'andorra', year: year, value: value)
+	end
+end
 
-coin1 = Coin.new()
-coin1.year = 2015
-coin1.value = 0.01
-coin1.country = 0
-coin1.save
-
-
-coin2 = Coin.new()
-coin2.year = 2015
-coin2.value = 0.01
-coin2.country = 1
-coin2.save
+(Coin.introduced_euro('austria')..Date.current.year).each do |year|
+	Coin.values.keys.each do |value| 
+		Coin.create(country: 'austria', year: year, value: value)
+	end
+end
