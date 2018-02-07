@@ -14,5 +14,12 @@ RSpec.describe Collection, type: :model do
         expect(c.my_owner_username).to eql("H")
       end
     end
+
+    context 'when the collection is correctly' do
+      it 'returns true' do
+      	c = Collection.create(currency: "euros", user_id: 5)
+        expect(c.valid?).to be true
+      end
+    end
   end
 end
