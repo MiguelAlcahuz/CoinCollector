@@ -1,6 +1,7 @@
 class CoinsController < ApplicationController
   before_action :set_coin, only: [:show, :edit, :update, :destroy]
   before_action :set_collection, only: [:new, :create, :update, :edit, :destroy, :index]
+
   # GET /coins
   # GET /coins.json
   def index
@@ -8,6 +9,7 @@ class CoinsController < ApplicationController
       params[:country] = "andorra"
     end
     @coins = @collection.coins
+  
   end
 
   # GET /coins/1
@@ -28,14 +30,17 @@ class CoinsController < ApplicationController
   # POST /coins.json
   def create
     @coin = Coin.new(coin_params)
-    if current_user.admin?
+    
+    if current_user.admin? && Coin.coin_validator(@coin.country, @coin.year) && @coin.exists? == false
       respond_to do |format|
         if @coin.save
-          format.html { redirect_to collection_coins_path(@collection, @coin), notice: 'Coin was successfully created.' }
+          format.html { redirect_to collection_coins_path, notice: 'Coin was successfully created.' }
         else
           format.html { render :new }
         end
       end
+    else
+      redirect_to collection_coins_path, notice: 'Unable to create coin, it does not apply to the data needed'
     end
   end
 
@@ -44,12 +49,10 @@ class CoinsController < ApplicationController
   def update
     
     respond_to do |format|
-      if @coin.update(coin_params)
+      if @coin.update(coin_params) && Coin.coin_validator(@coin.country, @coin.year)
         format.html { redirect_to collection_coins_path, notice: 'Coin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @coin }
       else
         format.html { render :edit }
-        format.json { render json: @coin.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,6 +73,7 @@ class CoinsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
       @coin = Coin.find(params[:id])
+      
     end
 
     def set_collection
@@ -78,6 +82,6 @@ class CoinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coin_params
-      params.permit(:year, :country, :value)
+      params.require(:coin).permit(:year, :country, :value)
     end
 end
