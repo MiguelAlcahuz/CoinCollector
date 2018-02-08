@@ -82,6 +82,6 @@ class CoinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coin_params
-      params.require(:coin).permit(:id, :year, :country, :value)
+      params.require(:coin).permit(:year, :country, :value)
     end
 end

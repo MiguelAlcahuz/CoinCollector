@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :users
+  
+  namespace :collections do
+  	resource :toggle_coin
+  end
+
   resources :collections do
   	resources :coins 
   end
