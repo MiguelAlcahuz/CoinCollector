@@ -21,8 +21,8 @@
       <th scope="col">  0,05  </th>
       <th scope="col">  0,02  </th>
       <th scope="col">  0,01  </th>
-      <th scope="col">Totalcoin</th>
-      <th scope="col">Sumtotalcoin</th>
+      <th scope="col">Total</th>
+      <th scope="col">Amount</th>
   </thead>
   <tbody>
     <tr>
@@ -34,16 +34,18 @@
       <% Coin.where(country: params[:country], year: i).order(year: :asc, value: :desc).each do |coin| %>  
       <td> 
             <%if @coins.include?(coin) %>
-              LA TENGO
+              GOT IT!
+              <%= link_to "Show", collection_coin_path(@collection, coin)%>
+              <%= link_to "Edit", edit_collection_coin_path(@collection, coin) %>
               <% sumcounter += Coin.get_coin_value(coin.value)%>
               <% counter += 1 %>
               
             <% else %>
             
               <%= form_with(url: collection_path(@collection), method: :put, local: true) do |form| %>
-                ID<input type="text" name="coin_id" value="<%=coin.id%>">
-                COLLECTION<input type="text" name="collection_id" value="<%=@collection.id%>">
-                <button type="submit"> CHECK </button>
+                ID </br><input type="text" name="coin_id" value="<%=coin.id%>">
+                COLLECTION <input type="text" name="collection_id" value="<%=@collection.id%>">
+                <button type="submit"> ACCEPT </button>
               <% end %>
             <% end %>
             

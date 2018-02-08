@@ -9,7 +9,7 @@ class CoinsController < ApplicationController
       params[:country] = "andorra"
     end
     @coins = @collection.coins
-  
+    authorize @coins
   end
 
   # GET /coins/1
@@ -20,6 +20,7 @@ class CoinsController < ApplicationController
   # GET /coins/new
   def new
     @coin = Coin.new
+    authorize @coin
   end
 
   # GET /coins/1/edit
@@ -30,8 +31,8 @@ class CoinsController < ApplicationController
   # POST /coins.json
   def create
     @coin = Coin.new(coin_params)
-    
-    if current_user.admin? && Coin.coin_validator(@coin.country, @coin.year) && @coin.exists? == false
+    authorize @coin
+    if current_user.admin? && @coin.year_is_valid? && @coin.exists? == false
       respond_to do |format|
         if @coin.save
           format.html { redirect_to collection_coins_path, notice: 'Coin was successfully created.' }
@@ -47,9 +48,8 @@ class CoinsController < ApplicationController
   # PATCH/PUT /coins/1
   # PATCH/PUT /coins/1.json
   def update
-    
     respond_to do |format|
-      if @coin.update(coin_params) && Coin.coin_validator(@coin.country, @coin.year)
+      if @coin.update(coin_params) && @coin.year_is_valid?
         format.html { redirect_to collection_coins_path, notice: 'Coin was successfully updated.' }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class CoinsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
       @coin = Coin.find(params[:id])
-      
+      authorize @coin
     end
 
     def set_collection
@@ -82,6 +82,6 @@ class CoinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coin_params
-      params.require(:coin).permit(:year, :country, :value)
+      params.require(:coin).permit(:id, :year, :country, :value)
     end
 end
