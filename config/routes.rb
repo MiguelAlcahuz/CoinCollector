@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   
   resources :users
   
-  namespace :collections do
-  	resource :toggle_coin
-  end
-
-  resources :collections do
+  resources :collections  do
   	resources :coins 
+    member do
+      scope module: "collection" do
+      resources :toggle_coins
+      end
+    end
   end
 
   root 'welcome#index'

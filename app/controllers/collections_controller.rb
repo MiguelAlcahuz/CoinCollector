@@ -49,7 +49,6 @@ class CollectionsController < ApplicationController
   # PATCH/PUT /collections/1
   # PATCH/PUT /collections/1.json
   def update
-    add_coin_to_collection
     respond_to do |format|
       if @collection.update(collection_params)
         format.html { redirect_to collection_coins_path(@collection), notice: 'Collection was successfully updated.' }

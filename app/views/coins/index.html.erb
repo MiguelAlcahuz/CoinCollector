@@ -35,17 +35,20 @@
       <td> 
             <%if @coins.include?(coin) %>
               GOT IT!
-              <%= link_to "Show", collection_coin_path(@collection, coin)%>
-              <%= link_to "Edit", edit_collection_coin_path(@collection, coin) %>
+              <%= form_with(url: toggle_coin_path(@collection.id, coin), method: :delete, local: true) do |form| %>
+                ID </br><input type="text" name="coin_id" value="<%=coin.id%>">
+                COLLECTION <input type="text" name="collection_id" value="<%=@collection.id%>">
+                <button type="submit"> DELETE </button>
+              <% end %>
               <% sumcounter += Coin.get_coin_value(coin.value)%>
               <% counter += 1 %>
               
             <% else %>
             
-              <%= form_with(url: collection_path(@collection), method: :put, local: true) do |form| %>
+              <%= form_with(url: toggle_coin_path(@collection.id, coin), method: :put, local: true) do |form| %>
                 ID </br><input type="text" name="coin_id" value="<%=coin.id%>">
                 COLLECTION <input type="text" name="collection_id" value="<%=@collection.id%>">
-                <button type="submit"> ACCEPT </button>
+                <button type="submit"> UPDATE </button>
               <% end %>
             <% end %>
             
