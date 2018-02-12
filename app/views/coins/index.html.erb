@@ -34,7 +34,7 @@
       <% Coin.where(country: params[:country], year: i).order(year: :asc, value: :desc).each do |coin| %>  
       <td> 
             <%if @coins.include?(coin) %>
-              GOT IT!
+              GOT IT! </br>
               <%= form_with(url: toggle_coin_path(@collection.id, coin), method: :delete, local: true) do |form| %>
                 ID </br><input type="text" name="coin_id" value="<%=coin.id%>">
                 COLLECTION <input type="text" name="collection_id" value="<%=@collection.id%>">

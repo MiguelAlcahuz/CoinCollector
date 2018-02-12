@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   
   resources :users
   
-  resources :collections  do
+  resources :collections do
   	resources :coins 
     member do
       scope module: "collection" do
-      resources :toggle_coins
+      resources :toggle_coins, param: :toggle_coin_id
       end
     end
   end
