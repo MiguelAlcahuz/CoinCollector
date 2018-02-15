@@ -8,7 +8,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,  :authentication_keys => [:login]
   validates :username, uniqueness: true
-  validates :email, uniqueness: true
 
   enum roles: {
   	collectionist: 0,

@@ -35,22 +35,22 @@
       <td> 
             <%if @coins.include?(coin) %>
               GOT IT! </br>
-              <%= form_with(url: toggle_coin_path(@collection.id, coin), method: :delete, local: true) do |form| %>
-                ID </br><input type="text" name="coin_id" value="<%=coin.id%>">
-                COLLECTION <input type="text" name="collection_id" value="<%=@collection.id%>">
-                <button type="submit"> DELETE </button>
-              <% end %>
+              <div id="destroy-form-<%=coin.id%>">
+                <%= render 'collection/toggle_coins/remove_coin_from_collection', collection: @collection, coin: coin %>
               <% sumcounter += Coin.get_coin_value(coin.value)%>
               <% counter += 1 %>
-              
+              </div>
             <% else %>
-            
-              <%= form_with(url: toggle_coin_path(@collection.id, coin), method: :put, local: true) do |form| %>
-                ID </br><input type="text" name="coin_id" value="<%=coin.id%>">
+            <div id="update-form">
+              <%= form_with(url: toggle_coin_path(@collection.id, coin), method: :put, remote: true) do |form| %>
+                ID 
+                </br>
+                <input type="text" name="coin_id" value="<%=coin.id%>">
                 COLLECTION <input type="text" name="collection_id" value="<%=@collection.id%>">
                 <button type="submit"> UPDATE </button>
               <% end %>
-            <% end %>
+            </div>
+          <% end %>
             
 
        

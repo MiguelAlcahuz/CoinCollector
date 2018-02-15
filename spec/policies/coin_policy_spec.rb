@@ -19,7 +19,7 @@ RSpec.describe CoinPolicy do
   #if a coin does not belong to its respective collection either admin nor collectionist can do nothing to it
   context "for a coin that DOES NOT belong to its collection and user is admin or collectionist" do
     subject { CoinPolicy }
-    permissions :show?, :new?, :create?, :index?, :update?, :edit?, :destroy? do
+    permissions :new?, :create?, :update?, :edit?, :destroy? do
       it { expect(subject).not_to permit(collectionist, moneda1) }
       it { expect(subject).not_to permit(collectionist, moneda2) }
     end

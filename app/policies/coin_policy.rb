@@ -6,11 +6,11 @@ class CoinPolicy < ApplicationPolicy
   end
 
   def index?
-     @user.admin? 
+    true
   end
 
   def show?
-    @user.admin? 
+    true 
   end
  
   def create?

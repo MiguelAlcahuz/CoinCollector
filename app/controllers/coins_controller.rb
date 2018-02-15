@@ -9,7 +9,6 @@ class CoinsController < ApplicationController
       params[:country] = "andorra"
     end
     @coins = @collection.coins
-    authorize @coins
   end
 
   # GET /coins/1
@@ -32,7 +31,7 @@ class CoinsController < ApplicationController
   def create
     @coin = Coin.new(coin_params)
     authorize @coin
-    if current_user.admin? && @coin.year_is_valid? && @coin.exists? == false
+    if current_user.admin? && @coin.year_is_valid? && Coin.exists?(@coin.id) == false
       respond_to do |format|
         if @coin.save
           format.html { redirect_to collection_coins_path, notice: 'Coin was successfully created.' }

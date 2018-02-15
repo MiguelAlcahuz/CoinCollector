@@ -12,13 +12,6 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
+//= require jquery_ujs
 //= require_tree .
-
-function showCountry(){
-	var selectedCountry =  document.getElementById('country').value;
-	console.log(selectedCountry);
-	
-   // for i in Coin.introduced_euro[selectedCountry]..yearNow  
-
-
-}

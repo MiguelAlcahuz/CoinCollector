@@ -34,14 +34,13 @@ class CollectionsController < ApplicationController
     @collection = Collection.new(collection_params)
     @collection.user = current_user
     authorize @collection
-
-    respond_to do |format|
-      if @collection.save
-        format.html { redirect_to collections_path, notice: 'Collection was successfully created.' }
-        format.json { render :show, status: :created, location: @collection }
-      else
-        format.html { render :new }
-        format.json { render json: @collection.errors, status: :unprocessable_entity }
+    if @collection.valid? && @collection.id_validation? && Collection.exists?(@collection.id) == false
+      respond_to do |format|
+        if @collection.save 
+          format.html { redirect_to collections_path, notice: 'Collection was successfully created.' }
+        else
+          format.html { render :new }
+        end
       end
     end
   end
@@ -64,7 +63,6 @@ class CollectionsController < ApplicationController
     @collection.destroy
     respond_to do |format|
       format.html { redirect_to collections_url, notice: 'Collection was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -77,6 +75,6 @@ class CollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params.permit(:currency)
+      params.require(:collection).permit(:currency, :user_id)
     end
 end

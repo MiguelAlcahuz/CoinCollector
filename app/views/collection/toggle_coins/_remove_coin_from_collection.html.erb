@@ -1,0 +1,7 @@
+<%= form_with(url: toggle_coin_path(collection.id, coin), method: :delete, remote: true) do |form| %>
+  ID 
+  </br>
+  <input type="text" name="coin_id" value="<%=coin.id%>">
+  COLLECTION <input type="text" name="collection_id" value="<%=@collection.id%>">
+  <button type="submit"> DELETE </button>
+<% end %>

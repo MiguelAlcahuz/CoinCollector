@@ -14,7 +14,7 @@ class CollectionPolicy < ApplicationPolicy
   end
  
   def create?
-     @user.admin? || belongs_to_user?
+     true
   end
  
   def update?
