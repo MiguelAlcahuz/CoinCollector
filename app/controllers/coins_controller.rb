@@ -35,8 +35,10 @@ class CoinsController < ApplicationController
       respond_to do |format|
         if @coin.save
           format.html { redirect_to collection_coins_path, notice: 'Coin was successfully created.' }
+          format.js
         else
           format.html { render :new }
+          format.js
         end
       end
     else
@@ -50,8 +52,10 @@ class CoinsController < ApplicationController
     respond_to do |format|
       if @coin.update(coin_params) && @coin.year_is_valid?
         format.html { redirect_to collection_coins_path, notice: 'Coin was successfully updated.' }
+        format.js
       else
         format.html { render :edit }
+        format.js
       end
     end
   end
@@ -63,6 +67,7 @@ class CoinsController < ApplicationController
     @coin.destroy
     respond_to do |format|
       format.html { redirect_to collection_coins_path(@collection), notice: 'Coin was successfully destroyed.' }
+      format.js
       format.json { head :no_content }
     end
   end
@@ -72,7 +77,6 @@ class CoinsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_coin
       @coin = Coin.find(params[:id])
-      authorize @coin
     end
 
     def set_collection

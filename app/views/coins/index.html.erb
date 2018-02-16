@@ -34,37 +34,33 @@
       <% Coin.where(country: params[:country], year: i).order(year: :asc, value: :desc).each do |coin| %>  
       <td> 
             <%if @coins.include?(coin) %>
-              GOT IT! </br>
               <div id="destroy-form-<%=coin.id%>">
-                <%= render 'collection/toggle_coins/remove_coin_from_collection', collection: @collection, coin: coin %>
-              <% sumcounter += Coin.get_coin_value(coin.value)%>
-              <% counter += 1 %>
-              </div>
+                <%= render 'collection/toggle_coins/remove_coin_from_collection', collection: @collection, coin: coin  %>
+                <% sumcounter += Coin.get_coin_value(coin.value)%>
+                <% counter += 1 %>
             <% else %>
-            <div id="update-form">
-              <%= form_with(url: toggle_coin_path(@collection.id, coin), method: :put, remote: true) do |form| %>
-                ID 
-                </br>
-                <input type="text" name="coin_id" value="<%=coin.id%>">
-                COLLECTION <input type="text" name="collection_id" value="<%=@collection.id%>">
-                <button type="submit"> UPDATE </button>
-              <% end %>
+            <div id="update-form-<%= coin.id%>">
+              <%= render 'collection/toggle_coins/update_coin_from_collection', collection: @collection, coin: coin%>
             </div>
           <% end %>
-            
-
-       
         </td>
       <% end %>
-        <td> <%= counter %> </td>
-        <td> <%= sumcounter %> </td>
+        <td>  
+          <div id="counter-form">
+            <%= render 'collection/toggle_coins/counter_coin_from_collection', counter: counter, sumcounter: sumcounter %>
+          </div>
+        </td>
+        <td>  
+          <div id="sumcounter-form">
+            <%= render 'collection/toggle_coins/sumcounter_coin_from_collection', sumcounter: sumcounter %>
+          </div>
+        </td>
     </tr>
   <% end %>
   </tbody>
 
 
 </table>
-
-<%= link_to 'New Coin', new_collection_coin_path(@collection) %>
-| <%= link_to 'Back', collections_path %>
+<%= link_to 'New Coin', new_collection_coin_path(@collection), :remote => true %>
+<%= link_to 'Back', collections_path, :remote => true %>
 </body>

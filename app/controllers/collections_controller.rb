@@ -38,8 +38,10 @@ class CollectionsController < ApplicationController
       respond_to do |format|
         if @collection.save 
           format.html { redirect_to collections_path, notice: 'Collection was successfully created.' }
+          format.js
         else
           format.html { render :new }
+          format.js
         end
       end
     end
@@ -51,8 +53,10 @@ class CollectionsController < ApplicationController
     respond_to do |format|
       if @collection.update(collection_params)
         format.html { redirect_to collection_coins_path(@collection), notice: 'Collection was successfully updated.' }
+        format.js
       else
         format.html { render :edit }
+        format.js
       end
     end
   end
@@ -63,6 +67,7 @@ class CollectionsController < ApplicationController
     @collection.destroy
     respond_to do |format|
       format.html { redirect_to collections_url, notice: 'Collection was successfully destroyed.' }
+      format.js
     end
   end
 

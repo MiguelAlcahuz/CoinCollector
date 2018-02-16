@@ -18,7 +18,7 @@ RSpec.describe CollectionPolicy do
 
   context "collectionist over another collection" do
     subject { CollectionPolicy}
-    permissions :show?, :new?, :create?, :update?, :edit?, :destroy? do
+    permissions :show?, :update?, :edit?, :destroy? do
         it { expect(subject).not_to permit(collectionist, dollars) } 
     end
   end

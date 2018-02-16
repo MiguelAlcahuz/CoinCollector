@@ -126,7 +126,7 @@ RSpec.describe CollectionsController, type: :controller do
 
       it "returns a success response when GET #new" do
         get :new, params: {collection: euros}
-        expect(response).not_to be_success
+        expect(response).to be_success
       end
 
       it "returns a success response when GET #edit" do
