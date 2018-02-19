@@ -1,0 +1,31 @@
+h1.formattitlecollection
+  | Collections  
+body style="background-color:#d5dadc"
+  table.table-bordered align="center"         
+    tr    
+      td class="formatsubheadercollection" CURRENCY 
+      td class="formatsubheadercollection" OPTIONS 
+      - if current_user.admin? 
+        td class="formatsubheadercollection" COLLECTIONIST 
+    - @collections.each do |collection|  
+      tr
+        td class="formatcontentcollection"
+          = collection.currency 
+        td class="formatcontentcollection"
+          = link_to 'My coins ', collection_coins_path(collection)
+          = link_to 'Edit ', edit_collection_path(collection)
+          = link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } 
+        td class="formatcontentcollection"
+          = collection.my_owner_username 
+      
+
+
+  p class="logcontentcollection"
+    = link_to 'New Collection', new_collection_path, class: 'linkcolor' 
+  - if user_signed_in? 
+    p class="logcontentcollection"
+      = link_to 'Logout', destroy_user_session_path, method: :delete,  class: 'linkcolor'  
+  - if current_user.admin? 
+    p class="logcontentcollection" 
+      = link_to 'Users',  users_path
+
