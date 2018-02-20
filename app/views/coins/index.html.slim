@@ -1,0 +1,57 @@
+p id="notice" = notice 
+h1.formattitlecollection Coins
+body style="background-color:#d5dadc"
+
+  
+  table class="table table-bordered"
+    tr
+      th scope="col"
+        form url = "collection_coins_path(@collection)" method = "GET" 
+        = select_tag :country, options_for_select(Coin.countries.keys) 
+        button type="submit" Show
+       
+      th scope="col" Year   
+      th scope="col"  2   
+      th scope="col"  1   
+      th scope="col"  0,5  
+      th scope="col"  0,2  
+      th scope="col"  0,1  
+      th scope="col"  0,05  
+      th scope="col"  0,02  
+      th scope="col"  0,01  
+      th scope="col" Total
+      th scope="col" Amount
+  
+    tbody
+      - for i in Coin.introduced_euro(params[:country])..Date.current.year 
+        tr
+          td 
+            = params[:country].upcase  
+          td 
+            = i 
+          - sumcounter = 0 
+          - counter = 0 
+          - Coin.where(country: params[:country], year: i).order(year: :asc, value: :desc).each do |coin|   
+            td 
+              - if @coins.include?(coin) 
+                div id="destroy-form-=coin.id"
+                  = render 'collection/toggle_coins/remove_coin_from_collection', collection: @collection, coin: coin  
+                  - sumcounter += Coin.get_coin_value(coin.value)
+                  - counter += 1 
+
+              - else 
+                div id="update-form-= coin.id"
+                  = render 'collection/toggle_coins/update_coin_from_collection', collection: @collection, coin: coin          
+               
+          td  
+            div id="counter-form"
+              = render 'collection/toggle_coins/counter_coin_from_collection', counter: counter, sumcounter: sumcounter 
+           
+          td  
+            div id="sumcounter-form"
+              = render 'collection/toggle_coins/sumcounter_coin_from_collection', sumcounter: sumcounter 
+           
+  = link_to 'New Coin', new_collection_coin_path(@collection)
+  br
+  = link_to 'Back', collections_path
+

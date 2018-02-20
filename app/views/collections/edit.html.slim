@@ -1,6 +1,7 @@
 body style="background-color:#d5dadc"
 	h1.formattitlecollection Editing Collection
-	div.formatcontenteditcollection
+	div.formatcrudcollection
 		= render 'form', collection: @collection 
 		= link_to 'Show ', collection_path(@collection), {:style => 'color:#00a7cc'} 
+		br
 		= link_to 'Back', collections_path, {:style => 'color:#00a7cc'} 

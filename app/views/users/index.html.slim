@@ -1,0 +1,29 @@
+h1.formattitlecollection Users
+body style="background-color:#d5dadc"
+  div.formatcrudcollection
+    = search_form_for @q do |user| 
+      b
+        = user.label :username
+      br
+      = user.search_field :username_cont 
+      br
+      = user.submit 
+
+      table
+        thead
+          tr
+            th
+            br
+            b
+              = sort_link(@q, :username) 
+          
+        tbody
+          - @users.each do |user|     
+            td
+            b
+              |  
+              = user.my_user_name
+            br
+            = link_to 'Edit ', edit_user_path(user)
+            = link_to 'Back', collections_path
+      

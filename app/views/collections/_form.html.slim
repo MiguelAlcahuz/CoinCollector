@@ -1,21 +1,16 @@
-<%= form_with(model: collection, local: true) do |form| %>
-  <% if collection.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
-
-      <ul>
-      <% collection.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  div class="field"
+= form_with(model: collection, local: true) do |form| 
+  - if collection.errors.any? 
+    div id="error_explanation"
+      h2 
+        = pluralize(collection.errors.count, "error") 
+      ul
+      - collection.errors.full_messages.each do |message| 
+        li 
+          = message 
+  div.field
     b
       = form.label :currency
       = form.text_field :currency, id: :collection_currency 
-  
-  div class="actions"
+  div.actions
     = form.submit 
-<% end %>
+

@@ -1,0 +1,33 @@
+= form_with(model: [collection, coin], remote: true) do |form| 
+  - if coin.errors.any? 
+    div id="error_explanation"
+      h2= pluralize(coin.errors.count, "error") 
+
+      ul
+       coin.errors.full_messages.each do |message| 
+        li
+        = message 
+            
+  
+  
+  div class="field"
+    b
+      = form.label :year 
+      = form.text_field :year, id: :coin_year 
+
+
+  div class="field"  
+    b
+      = form.label :country 
+      = select("coin", "country", Coin.countries.keys) 
+
+
+  div class="field"
+    b
+      = form.label :value 
+      = select("coin", "value", Coin.values.keys) 
+
+
+  div class="actions"
+    = form.submit 
+

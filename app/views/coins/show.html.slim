@@ -1,0 +1,18 @@
+p id="notice" notice 
+body style="background-color:#d5dadc"
+
+  strong Year:/strong
+  = @coin.year 
+
+
+
+  strong Country:/strong
+  = @coin.country 
+
+
+
+  strong Value:/strong
+  = @coin.value 
+
+
+	= link_to 'Back', collection_coins_path 

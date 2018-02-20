@@ -1,0 +1,8 @@
+h1.formattitlecollection Editing Coin
+body style="background-color:#d5dadc"
+	div.formatcrudecollection
+		= render 'form', coin: @coin, collection: @collection
+
+		= link_to 'Show', collection_coin_path(@collection, @coin) 
+		= link_to 'Back', collection_coins_path(@collection) 
+

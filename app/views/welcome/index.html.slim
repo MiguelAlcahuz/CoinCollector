@@ -1,5 +1,5 @@
+h1 class="titlecontentwelcome" Welcome to your CoinCollector
 body style="background-color:#d5dadc"
-	h1 class="titlecontentwelcome" Welcome to your CoinCollector
 
 	- if user_signed_in? 
 	  p class="logcontentwelcome"
@@ -9,7 +9,7 @@ body style="background-color:#d5dadc"
 	  	= link_to'Login', new_user_session_path,{class: 'linkcolor'}    
 	 	
 	p class="bodycontentwelcome"
- 		= link_to "Browse your collections", collections_path,{class: 'linkcolor'} 
+ 		= link_to "- Browse your collections", collections_path,{class: 'linkcolor'} 
  	p class="bodycontentwelcome"
-		= link_to "Start a new collection", new_collection_path,{class: 'linkcolor'} 
+		= link_to "- Start a new collection", new_collection_path,{class: 'linkcolor'} 
 	

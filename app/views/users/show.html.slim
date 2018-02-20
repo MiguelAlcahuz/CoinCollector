@@ -1,0 +1,10 @@
+p id="notice" = notice 
+h1.formattitlecollection User
+body style="background-color:#d5dadc"
+	div.formatcrudcollection
+		b
+	 		= @user.email
+	 		br
+	 		= @user.username
+	 	br
+		= link_to 'Back', users_path
