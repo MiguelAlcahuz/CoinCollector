@@ -1,1 +1,1 @@
-$('#update-form-<%=@coin.id%>').html("<%= j(render 'collection/toggle_coins/update_coin_from_collection', collection: @collection, coin: @coin) %>");
+$('#update-form-<%=@coin.id%>').html("<%= escape_javascript(render partial: 'collection/toggle_coins/remove_coin_from_collection', locals: {collection: @collection, coin: @coin}) %>");

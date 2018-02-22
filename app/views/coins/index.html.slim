@@ -34,18 +34,18 @@ body style="background-color:#d5dadc"
           - Coin.where(country: params[:country], year: i).order(year: :asc, value: :desc).each do |coin|   
             td 
               - if @coins.include?(coin) 
-                div id="destroy-form-=coin.id"
+                div id="destroy-form-#{coin.id}"
                   = render 'collection/toggle_coins/remove_coin_from_collection', collection: @collection, coin: coin  
                   - sumcounter += Coin.get_coin_value(coin.value)
                   - counter += 1 
 
               - else 
-                div id="update-form-= coin.id"
+                div id="update-form-#{coin.id}"
                   = render 'collection/toggle_coins/update_coin_from_collection', collection: @collection, coin: coin          
                
           td  
             div id="counter-form"
-              = render 'collection/toggle_coins/counter_coin_from_collection', counter: counter, sumcounter: sumcounter 
+              = render 'collection/toggle_coins/counter_coin_from_collection', counter: counter
            
           td  
             div id="sumcounter-form"

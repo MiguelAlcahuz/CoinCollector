@@ -2,10 +2,11 @@ class Collection::ToggleCoinsController < ApplicationController
 	
 	def destroy
 		@collection = Collection.find(params[:id])
-		if @collection.coins.include?(Coin.find(params[:toggle_coin_id]))
-			@collection.coins.delete(Coin.find(params[:toggle_coin_id]))
+		@coin = Coin.find(params[:toggle_coin_id])
+		if @collection.coins.include?(@coin)
+			@collection.coins.delete(@coin)
 			respond_to do |format| 
-				format.html {redirect_to collection_coins_path(@collection), notice: 'Collection was successfully updated.'}
+				#format.html {redirect_to collection_coins_path(@collection), notice: 'Collection was successfully updated.'}
 				format.js
 			end
 		else
@@ -20,9 +21,9 @@ class Collection::ToggleCoinsController < ApplicationController
     if @collection.coins.include?(@coin)
     	redirect_to collection_coins_path(@collection), notice: 'Unable to successfully update.' 
   	else
-	    @collection.coins << Coin.find(params[:toggle_coin_id])
+	    @collection.coins << @coin
 	    respond_to do |format| 
-	    	format.html {redirect_to collection_coins_path(@collection), notice: 'Collection was successfully updated.' }
+	    	#format.html {redirect_to collection_coins_path(@collection), notice: 'Collection was successfully updated.' }
 	    	format.js
   		end
   	end
