@@ -3,9 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $lightblue: '#1e434c';
 
-.table-bordered{
-	width: 60%;
-}
 
 .formattitlecollection {
 	width: 100%;
@@ -16,7 +13,6 @@ $lightblue: '#1e434c';
 }
 
 .formatcontentcollection {
-	width: 50%;
 	height: 45px;
 	text-align: center;
 	color: #1e434c;
@@ -30,6 +26,7 @@ $lightblue: '#1e434c';
 	font-weight: bold;
 	color: #73605B;
 	font-size: 25px;
+	width: 300px !important;
 }
 
 .logcontentcollection {
@@ -38,7 +35,6 @@ $lightblue: '#1e434c';
 	font-size: 15px;
 	font-weight: 900;
 	color:#1e434c;
-	margin-right: 5px;
 }
 
 .linkcolor:visited {

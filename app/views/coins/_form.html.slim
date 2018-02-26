@@ -13,18 +13,21 @@
   div class="field"
     b
       = form.label :year 
+      |  
       = form.text_field :year, id: :coin_year 
 
 
   div class="field"  
     b
       = form.label :country 
+      |  
       = select("coin", "country", Coin.countries.keys) 
 
 
   div class="field"
     b
       = form.label :value 
+      |  
       = select("coin", "value", Coin.values.keys) 
 
 

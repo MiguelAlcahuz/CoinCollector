@@ -8,6 +8,7 @@ body style="background-color:#d5dadc"
       th scope="col"
         form url = "collection_coins_path(@collection)" method = "GET" 
         = select_tag :country, options_for_select(Coin.countries.keys) 
+        |  
         button type="submit" Show
        
       th scope="col" Year   
