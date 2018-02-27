@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180129104649) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "coins", force: :cascade do |t|
     t.integer "year"
     t.integer "country"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20180129104649) do
   end
 
   create_table "coins_collections", id: false, force: :cascade do |t|
-    t.integer "coin_id", null: false
-    t.integer "collection_id", null: false
+    t.bigint "coin_id", null: false
+    t.bigint "collection_id", null: false
     t.index ["coin_id", "collection_id"], name: "coins_collections_index"
     t.index ["collection_id", "coin_id"], name: "collections_coins_index"
   end
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20180129104649) do
     t.string "currency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
@@ -55,4 +58,5 @@ ActiveRecord::Schema.define(version: 20180129104649) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "collections", "users"
 end
