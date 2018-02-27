@@ -18,6 +18,7 @@ gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
 gem 'devise'
 gem 'slim'
+
 group :development do
   #gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -34,6 +35,9 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :development do
+  gem "capistrano", "~> 3.10", require: false
+end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
