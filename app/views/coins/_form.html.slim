@@ -21,7 +21,7 @@
     b
       = form.label :country 
       |  
-      = select("coin", "country", Coin.countries.keys) 
+      = select("coin", "country", Coin.countries.keys.map{|x| x.capitalize}) 
 
 
   div class="field"

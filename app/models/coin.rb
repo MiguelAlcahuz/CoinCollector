@@ -91,6 +91,7 @@ class Coin < ApplicationRecord
 
   }
 
+
   ONECENT = 0.01 
   TWOCENT = 0.02
   FIVECENT = 0.05
