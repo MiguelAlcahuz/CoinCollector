@@ -1,0 +1,1 @@
+CoinCollectionProject::Application.config.relative_url_root = "/"

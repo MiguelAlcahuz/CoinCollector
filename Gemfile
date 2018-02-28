@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'slim'
 
+
 group :development do
   #gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -38,6 +39,10 @@ end
 group :development do
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-rails", "~> 1.3", require: false
+  gem 'capistrano-linked-files'
+  gem 'capistrano-rake', require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', '~> 1.3'
 end
 
 group :test do
